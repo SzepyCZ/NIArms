@@ -5,7 +5,7 @@
 
 class CfgPatches {
     class hlcweapons_ar15 {
-        requiredaddons[] = {"A3_Data_F","A3_UI_F","A3_Anims_F","A3_Anims_F_Config_Sdr","A3_Weapons_F","asdg_jointrails","hlcweapons_core"};
+        requiredaddons[] = {"hlcweapons_core"};
         units[] = { "HLC_AR_ammobox", "Weapon_hlc_rifle_RU556","Weapon_hlc_rifle_RU5562","Weapon_hlc_rifle_Colt727","Weapon_hlc_rifle_Colt727_GL","Weapon_hlc_rifle_SAMR",
             "Weapon_hlc_rifle_SAMR2","Weapon_hlc_rifle_CQBR","Weapon_hlc_rifle_M4","Weapon_hlc_rifle_m4m203","Weapon_hlc_rifle_bcmjack","Weapon_hlc_rifle_Bushmaster300","Weapon_hlc_rifle_vendimus","Weapon_hlc_rifle_honeybadger" };
         weapons[] = {"hlc_rifle_RU556","hlc_rifle_RU5562","hlc_rifle_Colt727","hlc_rifle_bcmjack","hlc_rifle_Colt727_GL","hlc_rifle_Bushmaster300","hlc_rifle_vendimus","hlc_rifle_SAMR","hlc_rifle_honeybadger","hlc_rifle_honeybase","hlc_rifle_bcmblackjack"};
@@ -208,6 +208,12 @@ class CfgMagazines {
     };
 };
 
+class CfgMagazineWells {
+    class CBA_762x35_STANAG {
+        NIA_mags[] = { "29rnd_300BLK_STANAG", "29rnd_300BLK_STANAG_T", "29rnd_300BLK_STANAG_S", "hlc_50rnd_300BLK_STANAG_EPR" };
+    };
+};
+
 class CfgWeapons {
 
 //muzzles
@@ -229,7 +235,6 @@ class CfgWeapons {
     };
 
 
-
     class Rifle;
     class Rifle_Base_F: Rifle {
         class WeaponSlotsInfo;
@@ -245,6 +250,7 @@ class CfgWeapons {
         aidispersioncoefx = 4;
         aidispersioncoefy = 6;
         magazines[] = { __556STANAG_MAGS, __556STANAG_BI_MAGS, __556NATO_BI_DRUMS };
+        magazineWell[] = {"CBA_556x45_STANAG"};
         class Library {
             libTextDesc = "AR15";
         };
@@ -389,7 +395,7 @@ class CfgWeapons {
         displayName = "AR15 Sanitised Carbine";
         descriptionShort = "Short-Barreled Rifle<br/>Caliber: 5.56mm";
         hiddenSelections[] = { "Main", "Extras", "Emag", "BAD_Lever", "Stock" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\ar15_co.tga", "hlc_wp_ar15\tex\extras_co.tga", "hlc_wp_ar15\tex\emag_ca.tga", "hlc_wp_ar15\tex\magpul_bad_lever_co.tga", "hlc_wp_ar15\tex\magpulmoetan_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\ar15_co", "hlc_wp_ar15\tex\extras_co", "hlc_wp_ar15\tex\emag_ca", "hlc_wp_ar15\tex\magpul_bad_lever_co", "hlc_wp_ar15\tex\magpulmoetan_co" };
         discretedistance[] = {300};
         discretedistanceinitindex = 0;
         bg_bipod = 0; 
@@ -481,7 +487,7 @@ class CfgWeapons {
         picture = "\hlc_wp_ar15\tex\ui\gear_hsld2_ca";
         displayName = "AR15 Magpul Carbine";
         hiddenSelections[] = { "Main", "Extras", "Emag", "BAD_Lever", "Stock" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\ru5563\ru556_co.tga", "hlc_wp_ar15\tex\ru5562\ru556_extras_co.tga", "hlc_wp_ar15\tex\emag_ca.tga", "hlc_wp_ar15\tex\magpul_bad_lever_co.tga", "" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\ru5563\ru556_co", "hlc_wp_ar15\tex\ru5562\ru556_extras_co", "hlc_wp_ar15\tex\emag_ca", "hlc_wp_ar15\tex\magpul_bad_lever_co", "" };
         class __MAGSWITCHCLASS {
             hlc_50rnd_556x45_EPR = "hlc_rifle_RU5562_x15";
             default = "hlc_rifle_RU5562";
@@ -524,7 +530,7 @@ class CfgWeapons {
             "hlc_wp_ar15\gesture\newgesture\samr_hands.rtm"
         };
         hiddenSelections[] = { "Main", "Rails", "Panels", "VFG", "Sights","FSB", "Stock", "GL" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\melon_cqbr\main_co.tga", "hlc_wp_ar15\tex\melon_cqbr\risfore1_co.tga", "hlc_wp_ar15\tex\tigg\rails_co.tga", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co.tga", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co.tga","","hlc_wp_ar15\tex\melon_cqbr\vltor_co.tga", "hlc_wp_ar15\tex\m203_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\melon_cqbr\main_co", "hlc_wp_ar15\tex\melon_cqbr\risfore1_co", "hlc_wp_ar15\tex\tigg\rails_co", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co","","hlc_wp_ar15\tex\melon_cqbr\vltor_co", "hlc_wp_ar15\tex\m203_co" };
         class WeaponSlotsInfo : WeaponSlotsInfo {
             mass = 54;
             class UnderBarrelSlot: asdg_UnderSlot {
@@ -579,7 +585,7 @@ class CfgWeapons {
         discretedistance[] = {300};
         discretedistanceinitindex = 0;
         hiddenSelections[] = { "Main", "Rails", "Panels", "VFG", "Sights", "FSB", "Stock", "GL" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\melon_cqbr\main_co.tga", "hlc_wp_ar15\tex\melon_cqbr\risfore1_co.tga", "hlc_wp_ar15\tex\tigg\rails_co.tga", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co.tga", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co.tga", "hlc_wp_ar15\tex\trhm16a2rec_co.tga", "hlc_wp_ar15\tex\m4furniture_co.tga", "hlc_wp_ar15\tex\m203_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\melon_cqbr\main_co", "hlc_wp_ar15\tex\melon_cqbr\risfore1_co", "hlc_wp_ar15\tex\tigg\rails_co", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co", "hlc_wp_ar15\tex\trhm16a2rec_co", "hlc_wp_ar15\tex\m4furniture_co", "hlc_wp_ar15\tex\m203_co" };
         bg_bipod = 0; 
         handAnim[] = {
             "OFP2_ManSkeleton",
@@ -640,7 +646,7 @@ class CfgWeapons {
         descriptionShort = "Carbine<br/>Caliber: 5.56mm";
         muzzles[] = { "this", "hlc_M203" };
         hiddenSelections[] = { "Main", "Rails", "Panels", "VFG", "Sights", "FSB", "Stock", "GL" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\melon_cqbr\main_co.tga", "hlc_wp_ar15\tex\melon_cqbr\risfore1_co.tga", "hlc_wp_ar15\tex\tigg\rails_co.tga", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co.tga", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co.tga", "hlc_wp_ar15\tex\trhm16a2rec_co.tga", "hlc_wp_ar15\tex\m4furniture_co.tga", "hlc_wp_ar15\tex\m203_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\melon_cqbr\main_co", "hlc_wp_ar15\tex\melon_cqbr\risfore1_co", "hlc_wp_ar15\tex\tigg\rails_co", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co", "hlc_wp_ar15\tex\trhm16a2rec_co", "hlc_wp_ar15\tex\m4furniture_co", "hlc_wp_ar15\tex\m203_co" };
         class WeaponSlotsInfo : WeaponSlotsInfo {
             mass = 78;
             class UnderBarrelSlot {
@@ -684,7 +690,7 @@ class CfgWeapons {
         displayName = "BCM 'Jack' Carbine";
         descriptionShort = "Assault rifle<br/>Caliber: 5.56mm";
         hiddenSelections[] = { "Upper","Lower","Foregrip","foregrip_rail","Sights","Stock" };
-        hiddenSelectionsTextures[] = { "\hlc_wp_ar15\tex\toadie_jackcarbine\upper_co.tga","hlc_wp_ar15\tex\toadie_jackcarbine\lower2_co.tga","hlc_wp_ar15\tex\toadie_jackcarbine\smr_co.tga","hlc_wp_ar15\tex\toadie_jackcarbine\smr_toprail_co.tga","hlc_wp_ar15\tex\tenoyl_tbs\tbs_co.tga", "hlc_wp_ar15\tex\toadie_jackcarbine\b5sopmod_co.tga" };
+        hiddenSelectionsTextures[] = { "\hlc_wp_ar15\tex\toadie_jackcarbine\upper_co","hlc_wp_ar15\tex\toadie_jackcarbine\lower2_co","hlc_wp_ar15\tex\toadie_jackcarbine\smr_co","hlc_wp_ar15\tex\toadie_jackcarbine\smr_toprail_co","hlc_wp_ar15\tex\tenoyl_tbs\tbs_co", "hlc_wp_ar15\tex\toadie_jackcarbine\b5sopmod_co" };
         discretedistance[] = {100, 200, 300, 400, 500};
         discretedistanceinitindex = 0;
         bg_bipod = 0; 
@@ -796,10 +802,11 @@ class CfgWeapons {
         displayName = "BCM 'Black-Jack' Custom";
         descriptionShort = "Assault rifle<br/>Caliber: .300 Blackout";
         magazines[] = { "29rnd_300BLK_STANAG", "29rnd_300BLK_STANAG_T", "29rnd_300BLK_STANAG_S","hlc_50rnd_300BLK_STANAG_EPR" };
+        magazineWell[] = {"CBA_762x35_STANAG"};
         recoil = "recoil_mxc";
         initspeed = -1;
         hiddenSelections[] = { "Upper", "Lower", "Foregrip", "foregrip_rail", "Sights", "Stock" };
-        hiddenSelectionsTextures[] = { "\hlc_wp_ar15\tex\toadie_Blackjack\upper_co.tga", "hlc_wp_ar15\tex\toadie_Blackjack\lower2_co.tga", "hlc_wp_ar15\tex\toadie_Blackjack\smr_co.tga", "hlc_wp_ar15\tex\toadie_Blackjack\smr_toprail_co.tga", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co.tga", "hlc_wp_ar15\tex\toadie_Blackjack\b5sopmod_co.tga" };
+        hiddenSelectionsTextures[] = { "\hlc_wp_ar15\tex\toadie_Blackjack\upper_co", "hlc_wp_ar15\tex\toadie_Blackjack\lower2_co", "hlc_wp_ar15\tex\toadie_Blackjack\smr_co", "hlc_wp_ar15\tex\toadie_Blackjack\smr_toprail_co", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co", "hlc_wp_ar15\tex\toadie_Blackjack\b5sopmod_co" };
         class WeaponSlotsInfo : WeaponSlotsInfo {
             class CowsSlot : asdg_OpticRail1913_short {
                 iconPosition[] = { 0.5, 0.35 };
@@ -883,7 +890,7 @@ class CfgWeapons {
         discretedistanceinitindex = 0;
         discreteDistanceCameraPoint[] = { "eye", "eye2", "eye3", "eye4", "eye5", "eye6"/*, "eye7", "eye8", "eye9", "eye10", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye" */ };
         hiddenSelections[] = { "upper", "lower", "Barrel","Stock" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\trhm16a2upper_co.tga", "hlc_wp_ar15\tex\trhm16a2rec_co.tga", "hlc_wp_ar15\tex\m16barrel_co.tga", "hlc_wp_ar15\tex\m4furniture_co.tga"};
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\trhm16a2upper_co", "hlc_wp_ar15\tex\trhm16a2rec_co", "hlc_wp_ar15\tex\m16barrel_co", "hlc_wp_ar15\tex\m4furniture_co"};
         cameraDir = "look";
         bg_bipod = 0; 
 
@@ -966,7 +973,7 @@ class CfgWeapons {
         descriptionShort = "Assault rifle<br/>Caliber: 5.56mm";
         muzzles[] = {"this", "hlc_M203"};
         hiddenSelections[] = { "upper", "lower", "Barrel", "Stock", "GL" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\trhm16a2upper_co.tga", "hlc_wp_ar15\tex\trhm16a2rec_co.tga", "hlc_wp_ar15\tex\m16barrel_co.tga", "hlc_wp_ar15\tex\m4furniture_co.tga", "hlc_wp_ar15\tex\m203_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\trhm16a2upper_co", "hlc_wp_ar15\tex\trhm16a2rec_co", "hlc_wp_ar15\tex\m16barrel_co", "hlc_wp_ar15\tex\m4furniture_co", "hlc_wp_ar15\tex\m203_co" };
         bg_bipod = 0; 
         class WeaponSlotsInfo: WeaponSlotsInfo {
             mass = 78;
@@ -1006,6 +1013,7 @@ class CfgWeapons {
         initspeed = -0.93;
         author = "Sephiris, Agent95, Farengar, Siemko,  Toadie";
         magazines[] = {"29rnd_300BLK_STANAG","29rnd_300BLK_STANAG_T","29rnd_300BLK_STANAG_S","hlc_50rnd_300BLK_STANAG_EPR"};
+        magazineWell[] = {"CBA_762x35_STANAG"};
         model = "hlc_wp_ar15\mesh\mill_bushmaster\car15.p3d";
         reloadAction = "HLC_GestureReloadAR15_catch_DR";
         picture = "\hlc_wp_ar15\tex\ui\gear_bushmaster_ca";
@@ -1014,7 +1022,7 @@ class CfgWeapons {
         discretedistance[] = { 100, 200, 300, 400, 500, 600 };
         discreteDistanceCameraPoint[] = { "eye_100", "eye_200", "eye_300", "eye_400", "eye_500", "eye_600"/*, "eye7", "eye8", "eye9", "eye10", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye" */ };
         hiddenSelections[] = { "Main"};
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\mill_bmar15\m4a1_co.tga"};
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\mill_bmar15\m4a1_co"};
         discretedistanceinitindex = 0;
         cameraDir = "look";
         bg_bipod = 0; 
@@ -1120,7 +1128,7 @@ class CfgWeapons {
         cameraDir = "look";
         recoil = "recoil_mx";
         hiddenSelections[] = { "Main","Stock","Sights" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\mill_bmar15\PBER_co.tga","hlc_wp_ar15\tex\tigg\m16furniture_co.tga","hlc_wp_ar15\tex\badger\hb_co.tga"};
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\mill_bmar15\PBER_co","hlc_wp_ar15\tex\tigg\m16furniture_co","hlc_wp_ar15\tex\badger\hb_co"};
         bg_bipod = 0; 
         class WeaponSlotsInfo: WeaponSlotsInfo {
             mass = 55;
@@ -1200,7 +1208,7 @@ class CfgWeapons {
         discretedistance[] = {100, 200, 300, 400, 500};
         discretedistanceinitindex = 0;
         hiddenSelections[] = { "Upper", "Lower", "D-Ring", "Rails", "Panels", "VFG", "Harris", "Patch", "Stock" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\samr\upper_co.tga", "hlc_wp_ar15\tex\samr\lower_co.tga", "hlc_wp_ar15\tex\samr\ras_co.tga", "hlc_wp_ar15\tex\samr\risras_co.tga", "hlc_wp_ar15\tex\samr\xtm_co.tga", "hlc_wp_ar15\tex\melon_cqbr\vgrip_tan_co.tga", "hlc_wp_ar15\tex\samr\hbipod_co.tga", "hlc_wp_ar15\tex\samr\16_ca.tga", "hlc_wp_ar15\tex\samr\stock_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\samr\upper_co", "hlc_wp_ar15\tex\samr\lower_co", "hlc_wp_ar15\tex\samr\ras_co", "hlc_wp_ar15\tex\samr\risras_co", "hlc_wp_ar15\tex\samr\xtm_co", "hlc_wp_ar15\tex\melon_cqbr\vgrip_tan_co", "hlc_wp_ar15\tex\samr\hbipod_co", "hlc_wp_ar15\tex\samr\16_ca", "hlc_wp_ar15\tex\samr\stock_co" };
         class WeaponSlotsInfo : WeaponSlotsInfo {
             mass = 90;
             class CowsSlot : asdg_OpticRail1913_long {
@@ -1279,7 +1287,7 @@ class CfgWeapons {
         author = "Twinke Masta, Tigg, Toadie";
         descriptionShort = "Accurised Assault Rifle<br/>Caliber: 5.56mm<br/> ";
         hiddenSelections[] = { "Upper", "Lower", "D-Ring", "Rails", "Panels", "VFG", "Harris", "Patch", "Stock" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\samr\upper_co.tga", "hlc_wp_ar15\tex\samr\lower2_co.tga", "hlc_wp_ar15\tex\samr\ras_co.tga", "hlc_wp_ar15\tex\samr\risras_co.tga", "hlc_wp_ar15\tex\samr\xtm2_co.tga", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co.tga", "hlc_wp_ar15\tex\samr\hbipod_co.tga", "", "hlc_wp_ar15\tex\samr\stock_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\samr\upper_co", "hlc_wp_ar15\tex\samr\lower2_co", "hlc_wp_ar15\tex\samr\ras_co", "hlc_wp_ar15\tex\samr\risras_co", "hlc_wp_ar15\tex\samr\xtm2_co", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co", "hlc_wp_ar15\tex\samr\hbipod_co", "", "hlc_wp_ar15\tex\samr\stock_co" };
         class __MAGSWITCHCLASS {
             hlc_50rnd_556x45_EPR = "hlc_rifle_samr2_x15";
             default = "hlc_rifle_samr2";
@@ -1315,7 +1323,7 @@ class CfgWeapons {
         displayName = "AAC 'Honey-Badger'";
         descriptionShort = "Suppressed Carbine<br/>Caliber: .300 Blackout";
         hiddenSelections[] = { "Main" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\badger\hb_co.tga"};
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\badger\hb_co"};
         fireLightIntensity = 0.02;
         discretedistance[] = { 100, 200, 300, 400, 500, 600 };
         discreteDistanceCameraPoint[] = { "eye_100", "eye_200", "eye_300", "eye_400", "eye_500", "eye_600"/*, "eye7", "eye8", "eye9", "eye10", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye" */ };
@@ -1414,7 +1422,7 @@ class CfgWeapons {
         discreteDistanceCameraPoint[] = { "eye", "eye2", "eye3", "eye4", "eye5", "eye6"/*, "eye7", "eye8", "eye9", "eye10", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye" */ };
         cameraDir = "look";
                 hiddenSelections[] = { "Main", "Rails", "Panels", "VFG", "Sights", "FSB", "Stock", "GL" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\melon_cqbr\main_co.tga", "hlc_wp_ar15\tex\melon_cqbr\risfore1_co.tga", "hlc_wp_ar15\tex\tigg\rails_co.tga", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co.tga", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co.tga", "hlc_wp_ar15\tex\trhm16a2rec_co.tga", "hlc_wp_ar15\tex\toadie_jackcarbine\b5sopmod_co", "hlc_wp_ar15\tex\m203_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\melon_cqbr\main_co", "hlc_wp_ar15\tex\melon_cqbr\risfore1_co", "hlc_wp_ar15\tex\tigg\rails_co", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co", "hlc_wp_ar15\tex\trhm16a2rec_co", "hlc_wp_ar15\tex\toadie_jackcarbine\b5sopmod_co", "hlc_wp_ar15\tex\m203_co" };
         class __MAGSWITCHCLASS {
             hlc_50rnd_556x45_EPR = "hlc_rifle_mk18mod0_x15";
             default = "hlc_rifle_mk18mod0";
@@ -1440,7 +1448,7 @@ class CfgWeapons {
         discreteDistanceCameraPoint[] = { "eye", "eye2", "eye3", "eye4", "eye5", "eye6"/*, "eye7", "eye8", "eye9", "eye10", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye" */ };
         cameraDir = "look";
         hiddenSelections[] = { "Main", "Rails", "Panels", "VFG", "Sights", "FSB", "Stock", "GL" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\melon_cqbr\main_co.tga", "hlc_wp_ar15\tex\melon_cqbr\risfore1_co.tga", "hlc_wp_ar15\tex\tigg\rails_co.tga", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co.tga", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co.tga", "hlc_wp_ar15\tex\trhm16a2rec_co.tga", "hlc_wp_ar15\tex\m4furniture_co.tga", "hlc_wp_ar15\tex\m203_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ar15\tex\melon_cqbr\main_co", "hlc_wp_ar15\tex\melon_cqbr\risfore1_co", "hlc_wp_ar15\tex\tigg\rails_co", "hlc_wp_ar15\tex\melon_cqbr\vgrip_co", "hlc_wp_ar15\tex\tenoyl_tbs\tbs_co", "hlc_wp_ar15\tex\trhm16a2rec_co", "hlc_wp_ar15\tex\m4furniture_co", "hlc_wp_ar15\tex\m203_co" };
         class __MAGSWITCHCLASS {
             hlc_50rnd_556x45_EPR = "hlc_rifle_M4a1carryhandle_x15";
             default = "hlc_rifle_M4a1carryhandle";

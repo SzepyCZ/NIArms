@@ -5,7 +5,7 @@
 
 class CfgPatches {
     class hlcweapons_aks {
-        requiredaddons[] = { "A3_Data_F", "A3_UI_F", "A3_Anims_F", "A3_Anims_F_Config_Sdr", "A3_Weapons_F", "A3_Weapons_F_Acc", "A3_Sounds_F_Mark", "asdg_jointrails", "hlcweapons_core" };
+        requiredaddons[] = { "hlcweapons_core" };
         units[] = {"HLC_AK_ammobox","Weapon_hlc_rifle_ak74","Weapon_hlc_rifle_ak74_dirty","Weapon_hlc_rifle_aks74","Weapon_hlc_rifle_aks74_GL","Weapon_hlc_rifle_ak12","Weapon_hlc_rifle_ak12GL","Weapon_hlc_rifle_akU12","Weapon_hlc_rifle_RPK12",
             "Weapon_hlc_rifle_aks74u","Weapon_hlc_rifle_aek971worn","Weapon_hlc_rifle_aek971","Weapon_hlc_rifle_ak47","Weapon_hlc_rifle_akm","Weapon_hlc_rifle_akmgl","Weapon_hlc_rifle_rpk","Weapon_hlc_rifle_rpk74n","Weapon_hlc_rifle_saiga12k"
         };
@@ -284,7 +284,6 @@ class CfgMagazines {
         mass = 12;
         displaynameshort = "00-Buck";
     };
-
     class hlc_10rnd_12g_slug_S12 : 30Rnd_556x45_Stanag {
         dlc = "Niarms_AK";
         author = "Toadie";
@@ -622,6 +621,21 @@ class CfgMagazines {
         displayname = "GRD Round (Blue)";
         displaynameshort = "Blue Smoke";
         picture = "\A3\Weapons_f\Data\UI\gear_UGL_Smokeshell_blue_CA.paa";
+    };
+};
+
+class CfgMagazineWells {
+    class CBA_545x39_AK {
+        NIA_mags[] = { __545x39_MAGS };
+    };
+    class CBA_762x39_AK {
+        NIA_mags[] = { __762x39_MAGS };
+    };
+    class CBA_40mm_GP {
+        NIA_grenades[] = { __40MM_GP_GRENADES };
+    };
+    class CBA_12g_SAIGA {
+        NIA_mags[] = { "hlc_10rnd_12g_buck_S12", "hlc_10rnd_12g_slug_S12" };
     };
 };
 
@@ -997,6 +1011,7 @@ class CfgWeapons {
             cursoraim = "gl";
             magazinereloadtime = 0;
             magazines[] = { __40MM_GP_GRENADES };
+            magazineWell[] = {"CBA_40mm_GP"};
             reloadmagazinesound[] = { "\hlc_wp_ak\snd\gp30_reload", 1, 1, 20 };
             reloadtime = 0.1;
             sound[] = { "\hlc_wp_ak\snd\gp30_fire", 1.0, 1, 400 };
@@ -1025,7 +1040,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\tigg_ak74\ak74.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_ak74_ca";
         hiddenSelections[] = { "Main", "Dovetail", "Mount" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_ak74\body_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_ak74\body_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co" };
         bg_bipod = 0; 
         discreteDistance[] = { 200, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
         discreteDistanceCameraPoint[] = { "eye", "eye_100", "eye_200", "eye_300", "eye_400", "eye_500", "eye_600", "eye_700", "eye_800", "eye_900", "eye_1000"/*, "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye" */ };
@@ -1047,6 +1062,7 @@ class CfgWeapons {
             hlc_60Rnd_545x39_t_rpk = "hlc_rifle_ak74_60rnd";
             default = "hlc_rifle_ak74";
         };
+        magazineWell[] = {"CBA_545x39_AK"};
     };
     class hlc_rifle_ak74_45rnd : hlc_rifle_ak74
     {
@@ -1073,7 +1089,7 @@ class CfgWeapons {
         picture = "\hlc_wp_ak\tex\ui\gear_ak74d1_ca";
         displayName = "Izhmash AK74(Worn)";
         hiddenSelections[] = { "Main", "Dovetail", "Mount" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_ak74\body_dirty_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_ak74\body_dirty_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co" };
         class __MAGSWITCHCLASS {
             hlc_45Rnd_545x39_t_rpk = "hlc_rifle_ak74_dirty_45rnd";
             hlc_45Rnd_545x39_m_rpk = "hlc_rifle_ak74_dirty_45rnd";
@@ -1106,7 +1122,7 @@ class CfgWeapons {
         picture = "\hlc_wp_ak\tex\ui\gear_ak74d2_ca";
         displayName = "Izhmash AK74(Worn)";
         hiddenSelections[] = { "Main", "Dovetail", "Mount" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_ak74\body_dirty2_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_ak74\body_dirty2_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co" };
         class __MAGSWITCHCLASS {
             hlc_45Rnd_545x39_t_rpk = "hlc_rifle_ak74_dirty2_45rnd";
             hlc_45Rnd_545x39_m_rpk = "hlc_rifle_ak74_dirty2_45rnd";
@@ -1143,7 +1159,7 @@ class CfgWeapons {
         picture = "\hlc_wp_ak\tex\ui\gear_aks74_ca";
         displayName = "Izhmash AKS74";
         hiddenSelections[] = { "Main", "Dovetail", "Mount" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_aks\aks_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_aks\aks_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co" };
         bg_bipod = 0; 
         class WeaponSlotsInfo : WeaponSlotsInfo {
             mass = 58;
@@ -1186,13 +1202,14 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\ak12\ak12.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_ak12_ca";
         hiddenSelections[] = { "Main", "Foregrip", "Bracket", "Bipod", "GP30"};
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\ak12\ak12_m_co.tga", "hlc_wp_ak\tex\ak12\ak12_upper_co.tga", "hlc_wp_ak\tex\toadie_offset\rail_co.tga","hlc_wp_ak\tex\mil_aks\aks-74u_co.tga",""};
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\ak12\ak12_m_co", "hlc_wp_ak\tex\ak12\ak12_upper_co", "hlc_wp_ak\tex\toadie_offset\rail_co","hlc_wp_ak\tex\mil_aks\aks-74u_co",""};
         discreteDistance[] = { 200, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
         discreteDistanceCameraPoint[] = { "eye", "eye_100", "eye_200", "eye_300", "eye_400", "eye_500", "eye_600", "eye_700", "eye_800", "eye_900", "eye_1000"/*, "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye" */ };
         cameraDir = "eye_look";
         bg_bipod = 0;
         reloadMagazineSound[] = { "\hlc_wp_ak\snd\soundshaders\ak12\ak12_reload2",1, 1, 20 };
         reloadAction = "HLC_GestureReloadAK12New";
+        magazineWell[] = {"CBA_545x39_AK"};
 
         modes[] = { "FullAuto", "Burst", "Single", "AI_Burst_close", "AI_Single_optics1", "AI_Single_optics2","AI_far","SemiAuto" };
 
@@ -1376,7 +1393,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\ak12\ak12GP.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_ak12GL_ca";
         hiddenSelections[] = { "Main", "Foregrip", "Bracket", "Bipod", "GP30" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\ak12\ak12_m_co.tga", "hlc_wp_ak\tex\ak12\ak12_upper_co.tga", "hlc_wp_ak\tex\toadie_offset\rail_co.tga", "hlc_wp_ak\tex\mil_aks\aks-74u_co.tga", "hlc_wp_ak\tex\gp30\gp30_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\ak12\ak12_m_co", "hlc_wp_ak\tex\ak12\ak12_upper_co", "hlc_wp_ak\tex\toadie_offset\rail_co", "hlc_wp_ak\tex\mil_aks\aks-74u_co", "hlc_wp_ak\tex\gp30\gp30_co" };
         discretedistance[] = { 200, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
         discretedistanceinitindex = 2;
         bg_bipod = 0;
@@ -1434,7 +1451,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\ak12\akU12.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_ak12u_ca";
         hiddenSelections[] = { "Main", "Foregrip", "Bracket", "Bipod", "GP30" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\ak12\ak12_m_co.tga", "hlc_wp_ak\tex\ak12\ak12_upper_co.tga", "hlc_wp_ak\tex\toadie_offset\rail_co.tga", "hlc_wp_ak\tex\mil_aks\aks-74u_co.tga", "hlc_wp_ak\tex\gp30\gp30_co.tga"};
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\ak12\ak12_m_co", "hlc_wp_ak\tex\ak12\ak12_upper_co", "hlc_wp_ak\tex\toadie_offset\rail_co", "hlc_wp_ak\tex\mil_aks\aks-74u_co", "hlc_wp_ak\tex\gp30\gp30_co"};
         discretedistance[] = { 200, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
         discretedistanceinitindex = 2;
         bg_bipod = 0; 
@@ -1553,7 +1570,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\ak12\rpk12_30rnd.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_rpk12_ca";
         hiddenSelections[] = { "Main", "Foregrip", "Bracket", "Bipod", "GP30" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\ak12\ak12_m_co.tga", "hlc_wp_ak\tex\ak12\ak12_upper_co.tga", "hlc_wp_ak\tex\toadie_offset\rail_co.tga", "hlc_wp_ak\tex\bl_rpk\rpk_co.tga", "hlc_wp_ak\tex\gp30\gp30_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\ak12\ak12_m_co", "hlc_wp_ak\tex\ak12\ak12_upper_co", "hlc_wp_ak\tex\toadie_offset\rail_co", "hlc_wp_ak\tex\bl_rpk\rpk_co", "hlc_wp_ak\tex\gp30\gp30_co" };
         cursor = "mg";
         UiPicture = "\A3\weapons_f\data\UI\icon_mg_CA.paa";
         discretedistance[] = { 200, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
@@ -1666,7 +1683,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\millaks74u\aks74u.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_aks74u_ca";
         hiddenSelections[] = { "Main", "Dovetail", "Mount","Magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mil_aks\aks-74u_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga","hlc_wp_ak\tex\rifleman_ak74\body_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mil_aks\aks-74u_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co","hlc_wp_ak\tex\rifleman_ak74\body_co" };
         discretedistance[] = {350,500};
         discretedistanceinitindex = 0;
         bg_bipod = 0; 
@@ -1714,6 +1731,7 @@ class CfgWeapons {
             hlc_60Rnd_545x39_t_rpk = "hlc_rifle_aks74u_60rnd";
             default = "hlc_rifle_aks74u";
         };
+        magazineWell[] = {"CBA_545x39_AK"};
     };
     class hlc_rifle_aks74u_45rnd : hlc_rifle_aks74u
     {
@@ -1721,7 +1739,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash AKS74U";
         model = "\hlc_wp_ak\mesh\millaks74u\aks74u_45rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mil_aks\aks-74u_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\adept\wpn_ak_10_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mil_aks\aks-74u_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\adept\wpn_ak_10_co" };
         inertia = 0.26+0.08;
 		__DEXTERITY(2.6+0.8,0);
     };
@@ -1731,7 +1749,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash AKS74U";
         model = "\hlc_wp_ak\mesh\millaks74u\aks74u_60rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mil_aks\aks-74u_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\rifleman_akmags\texture_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mil_aks\aks-74u_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\rifleman_akmags\texture_co" };
         inertia = 0.26+0.1;
 		__DEXTERITY(2.6+1,0);
     };
@@ -1750,7 +1768,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\ak47\ak47.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_ak47_ca";
         hiddenSelections[] = { "Main","upper", "Dovetail", "Mount", "Magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\47_rec_co.tga","hlc_wp_ak\tex\upper_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\magazine_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\47_rec_co","hlc_wp_ak\tex\upper_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\magazine_co" };
         recoil = "recoil_mx";
         discreteDistance[] = { 200, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
         discreteDistanceCameraPoint[] = { "eye", "eye_100", "eye_200", "eye_300", "eye_400", "eye_500", "eye_600", "eye_700", "eye_800", "eye_900", "eye_1000"/*, "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye" */ };
@@ -1759,7 +1777,7 @@ class CfgWeapons {
         descriptionShort = "Assault rifle<br/>Caliber: 7.62mm";
         reloadAction = "HLC_GestureReloadAK762";
         reloadMagazineSound[] = {"\hlc_wp_ak\snd\soundshaders\ak47\ak_reload_longer",0.9,1,30};
-
+        magazineWell[] = {"CBA_762x39_AK"};
 
         class FullAuto: FullAuto {
             reloadTime = 0.097;
@@ -1850,7 +1868,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash AK47";
         model = "\hlc_wp_ak\mesh\ak47\ak47_45rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\47_rec_co.tga", "hlc_wp_ak\tex\upper_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\bl_rpk\mag_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\47_rec_co", "hlc_wp_ak\tex\upper_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\bl_rpk\mag_co" };
         inertia = 0.35+0.07;
 		__DEXTERITY(3.5+0.7,0);
     };
@@ -1860,7 +1878,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash AK47";
         model = "\hlc_wp_ak\mesh\ak47\ak47_75rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\47_rec_co.tga", "hlc_wp_ak\tex\upper_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\populik_Drum\ak_drum_mag_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\47_rec_co", "hlc_wp_ak\tex\upper_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\populik_Drum\ak_drum_mag_co" };
         reloadAction = "HLC_GestureReloadAK762Drum";
         reloadMagazineSound[] = { "\hlc_wp_ak\snd\soundshaders\rpk\RPK_drumreload", 0.9, 1, 30 };
         inertia = 0.35+0.145;
@@ -1879,7 +1897,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\akm\akm.p3d";
 		picture = "\hlc_wp_ak\tex\ui\gear_akm_x_ca";
         hiddenSelections[] = { "Main", "Dovetail", "Mount" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_akm\akm_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga"};
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_akm\akm_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co"};
         displayName = "Izhmash AKM";
         class WeaponSlotsInfo : WeaponSlotsInfo {
             mass = 62;
@@ -1922,7 +1940,7 @@ class CfgWeapons {
         author = "MrRifleman, Bull5hit, Bohemia Interactive, Toadie";
         model = "\hlc_wp_ak\mesh\akmgl\akm.p3d";
         hiddenSelections[] = { "Main", "Dovetail", "Mount","GP25" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_akm\akm_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga","hlc_wp_ak\tex\bi_gp25\gp25_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_akm\akm_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co","hlc_wp_ak\tex\bi_gp25\gp25_co" };
         handanim[] = {"OFP2_ManSkeleton", "hlc_core\animation\gesture\handpose_gp.rtm"};
         displayName = "Izhmash AKM (GL)";
         descriptionShort = "Assault rifle,Grenade Launcher<br/>Caliber: 7.62mm";
@@ -1985,7 +2003,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\rpk\rpk_30rnd.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_rpk_x_ca";
         hiddenSelections[] = { "Main", "Dovetail", "Mount", "magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\rifleman_akm\akm_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\rifleman_akm\akm_co" };
         UiPicture = "\A3\weapons_f\data\UI\icon_mg_CA.paa";
         displayName = "Izhmash RPK";
         discreteDistance[] = { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
@@ -1993,6 +2011,7 @@ class CfgWeapons {
         cameraDir = "eye_look";
         descriptionShort = "Light Support Weapon<br/>Caliber: 7.62mm";
         reloadMagazineSound[] = {"\hlc_wp_ak\snd\soundshaders\rpk\rpk_reload",0.9,1,30};
+        magazineWell[] = {"CBA_762x39_AK"};
 
         modes[] = { "FullAuto", "Single", "50m", "AI_long", "AI_close", "AI_short", "AI_medium", "AI_far", "AI_toofar", "AI_far_optic1", "AI_toofar_optic1", "AI_far_optic2", "AI_toofar_optic2"};
         class FullAuto: FullAuto {
@@ -2082,7 +2101,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash RPK";
         model = "\hlc_wp_ak\mesh\rpk\rpk.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\bl_rpk\mag_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\bl_rpk\mag_co" };
         inertia = 0.48+0.07;
 		__DEXTERITY(4.8+0.7,0);
     };
@@ -2094,7 +2113,7 @@ class CfgWeapons {
         displayName = "Izhmash RPK";
         reloadAction = "HLC_GestureReloadAK762Drum";
         reloadMagazineSound[] = { "\hlc_wp_ak\snd\soundshaders\rpk\RPK_drumreload", 0.9, 1, 30 };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\populik_Drum\ak_drum_mag_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\populik_Drum\ak_drum_mag_co" };
         inertia = 0.48+0.145;
 		__DEXTERITY(4.8+1.45,0);
     };
@@ -2126,8 +2145,9 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\rpk\rpk74_30rnd.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_rpk74_ca";
         hiddenSelections[] = { "Main", "Dovetail", "Mount", "magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\rifleman_aks\aks_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\rifleman_aks\aks_co" };
         UiPicture = "\A3\weapons_f\data\UI\icon_mg_CA.paa";
+        magazineWell[] = {"CBA_545x39_AK"};
 
         modes[] = { "FullAuto", "Single", "50m", "AI_long", "AI_close", "AI_short", "AI_medium", "AI_far", "AI_toofar", "AI_far_optic1", "AI_toofar_optic1", "AI_far_optic2", "AI_toofar_optic2" };
         class WeaponSlotsInfo : WeaponSlotsInfo {
@@ -2224,7 +2244,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash RPK74";
         model = "\hlc_wp_ak\mesh\rpk\rpk74.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\adept\wpn_ak_10_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\adept\wpn_ak_10_co" };
         inertia = 0.47+0.081;
 		__DEXTERITY(4.7+0.8,0);
     };
@@ -2234,7 +2254,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash RPK74";
         model = "\hlc_wp_ak\mesh\rpk\rpk74_60rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\rifleman_akmags\texture_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bl_rpk\rpk_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\rifleman_akmags\texture_co" };
         inertia = 0.47+0.1;
 		__DEXTERITY(4.7+0.8,0);    };
 
@@ -2247,7 +2267,7 @@ class CfgWeapons {
         displayName = "Izhmash AKS74(GL)";
         picture = "\hlc_wp_ak\tex\ui\gear_aks74gl_ca";
         hiddenSelections[] = { "Main", "Dovetail", "Mount", "GP30" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_aks\aks_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\gp30\gp30_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_aks\aks_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\gp30\gp30_co" };
         muzzles[] = {"this", "hlc_GP30"};
         bg_bipod = 0; 
         class WeaponSlotsInfo: WeaponSlotsInfo {
@@ -2294,7 +2314,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\aek971\aek971clean.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_aek_ca";
         hiddenSelections[] = { "Main", "Mount" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mill_aek\bull5hit\aek971_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mill_aek\bull5hit\aek971_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co" };
         reloadMagazineSound[] = { "hlc_wp_ak\snd\soundshaders\aek\aek_reload", 1, 1, 20 };
         discreteDistance[] = { 200, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
         discreteDistanceCameraPoint[] = { "eye", "eye1", "eye", "eye3", "eye4", "eye5", "eye6", "eye7", "eye8", "eye9", "eye10"/*, "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye", "eye" */ };
@@ -2428,7 +2448,7 @@ class CfgWeapons {
         displayName = "ZID AEK971S(Worn)";
         model = "\hlc_wp_ak\mesh\aek971\aek971.p3d";
         hiddenSelections[] = { "Main", "Mount" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mill_aek\aek971_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mill_aek\aek971_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co" };
         class __MAGSWITCHCLASS {
             hlc_45Rnd_545x39_t_rpk = "hlc_rifle_aek971worn_45rnd";
             hlc_45Rnd_545x39_m_rpk = "hlc_rifle_aek971worn_45rnd";
@@ -2468,7 +2488,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\saiga\saiga12k.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_saiga_ca";
         hiddenSelections[] = { "Main" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bi_s12k\saiga12k_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\bi_s12k\saiga12k_co" };
         displayName = "Izhmash Saiga12K";
         discretedistance[] = {100,200,300,400};
         discretedistanceinitindex = 0;
@@ -2520,6 +2540,7 @@ class CfgWeapons {
         class __MAGSWITCHCLASS {
             default = "hlc_rifle_saiga12k";
         };
+        magazineWell[] = {"CBA_12g_SAIGA"};
     };
 
 
@@ -2606,6 +2627,7 @@ class CfgWeapons {
             hlc_75Rnd_762x39_AP_rpk = "hlc_rifle_RK62_75rnd";
             default = "hlc_rifle_RK62";
         };
+        magazineWell[] = {"CBA_762x39_AK"};
     };
     class hlc_rifle_RK62_45rnd : hlc_rifle_RK62
     {
@@ -2646,12 +2668,13 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\slr107u\slr.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_slr107u_ca";
         hiddenSelections[] = { "Main", "Dovetail", "Mount", "magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\toadie_slr107u\slr107u_map1_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\toadie_slr107u\akm_762_mag_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\toadie_slr107u\slr107u_map1_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\toadie_slr107u\akm_762_mag_co" };
         bg_bipod = 0;
         recoil = "recoil_mx";
         discretedistance[] = { 350, 500 };
         discretedistanceinitindex = 0;
         handAnim[] = { "OFP2_ManSkeleton", "hlc_wp_ak\anim\new_aks74uhandgesture.rtm" };
+        magazineWell[] = {"CBA_762x39_AK"};
 
         modes[] = { "FullAuto", "Single", "fullauto_medium", "single_medium_optics1", "single_far_optics2" };
 		class Single : Single {
@@ -2746,7 +2769,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Arsenal Inc. SLR107U";
         model = "\hlc_wp_ak\mesh\slr107u\slr_45rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\toadie_slr107u\slr107u_map1_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\bl_rpk\mag_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\toadie_slr107u\slr107u_map1_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\bl_rpk\mag_co" };
         inertia = 0.28+0.07;
 		__DEXTERITY(2.8+0.7,0);
     };
@@ -2756,7 +2779,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Arsenal Inc. SLR107U";
         model = "\hlc_wp_ak\mesh\slr107u\slr_75rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\toadie_slr107u\slr107u_map1_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\populik_Drum\ak_drum_mag_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\toadie_slr107u\slr107u_map1_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\populik_Drum\ak_drum_mag_co" };
         reloadAction = "HLC_GestureReloadAK762Drum";
         reloadMagazineSound[] = { "\hlc_wp_ak\snd\soundshaders\rpk\RPK_drumreload", 0.9, 1, 30 };
         inertia = 0.28+0.145;
@@ -2794,7 +2817,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Arsenal Inc. SLR107U";
         model = "\hlc_wp_ak\mesh\slr107u\slr_MTK_45rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\toadie_slr107u\slr107u_map1_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\bl_rpk\mag_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\toadie_slr107u\slr107u_map1_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\bl_rpk\mag_co" };
         inertia = 0.3+0.07;
 		__DEXTERITY(3+0.7,0);
     };
@@ -2804,7 +2827,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Arsenal Inc. SLR107U";
         model = "\hlc_wp_ak\mesh\slr107u\slr_MTK_75rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\toadie_slr107u\slr107u_map1_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\populik_Drum\ak_drum_mag_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\toadie_slr107u\slr107u_map1_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\populik_Drum\ak_drum_mag_co" };
         reloadAction = "HLC_GestureReloadAK762Drum";
         reloadMagazineSound[] = { "\hlc_wp_ak\snd\soundshaders\rpk\RPK_drumreload", 0.9, 1, 30 };
         inertia = 0.3+0.145;
@@ -2862,7 +2885,7 @@ class CfgWeapons {
         model = "\hlc_wp_ak\mesh\tigg_ak74m\ak74.p3d";
         picture = "\hlc_wp_ak\tex\ui\gear_ak74m_ca";
         hiddenSelections[] = { "Main", "Dovetail", "Mount","Foregrip","GP30" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_ak74\body_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga","hlc_wp_ak\tex\tigg_ak74m\ak74m_co.tga","hlc_wp_ak\tex\gp30\gp30_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\rifleman_ak74\body_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co","hlc_wp_ak\tex\tigg_ak74m\ak74m_co","hlc_wp_ak\tex\gp30\gp30_co" };
         displayName = "Izhmash AK74M";
         bg_bipod = 0;
         class WeaponSlotsInfo : WeaponSlotsInfo {
@@ -3049,7 +3072,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash AKS74U(MTK)";
         model = "\hlc_wp_ak\mesh\millaks74u\aks74u_mtk_45rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mil_aks\aks-74u_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\adept\wpn_ak_10_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mil_aks\aks-74u_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\adept\wpn_ak_10_co" };
         inertia = 0.28+0.08;
 		__DEXTERITY(2.8+0.8,0);
     };
@@ -3059,7 +3082,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash AKS74U(MTK)";
         model = "\hlc_wp_ak\mesh\millaks74u\aks74u_mtk_60rnd.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mil_aks\aks-74u_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co.tga", "hlc_wp_ak\tex\rifleman_akmags\texture_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\mil_aks\aks-74u_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rrxviii_mtk83\mtk-83_co", "hlc_wp_ak\tex\rifleman_akmags\texture_co" };
         inertia = 0.28+0.109;
 		__DEXTERITY(2.8+1.09,0);
     };
@@ -3094,7 +3117,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash AKM(MTK)";
         model = "\hlc_wp_ak\mesh\akm\akm_mtk_45rnd.p3d";
-        //hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\47_rec_co.tga", "hlc_wp_ak\tex\upper_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\bl_rpk\mag_co.tga" };
+        //hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\47_rec_co", "hlc_wp_ak\tex\upper_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\bl_rpk\mag_co" };
         inertia = 0.33+0.07;
 		__DEXTERITY(3.3+0.7,0);
     };
@@ -3104,7 +3127,7 @@ class CfgWeapons {
         dlc = "Niarms_AK";
         displayName = "Izhmash AKM(MTK)";
         model = "\hlc_wp_ak\mesh\akm\akm_mtk_75rnd.p3d";
-        //hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\47_rec_co.tga", "hlc_wp_ak\tex\upper_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\rifleman_ak74\mount_co.tga", "hlc_wp_ak\tex\bis_rpk\drum_magazine_co.tga" };
+        //hiddenSelectionsTextures[] = { "hlc_wp_ak\tex\47_rec_co", "hlc_wp_ak\tex\upper_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\rifleman_ak74\mount_co", "hlc_wp_ak\tex\bis_rpk\drum_magazine_co" };
         reloadAction = "HLC_GestureReloadAK762Drum";
         reloadMagazineSound[] = { "\hlc_wp_ak\snd\soundshaders\rpk\RPK_drumreload", 0.9, 1, 30 };
         inertia = 0.31+0.145;

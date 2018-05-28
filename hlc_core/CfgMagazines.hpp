@@ -131,37 +131,6 @@ FAL mag = 250g*/
         picture = "\hlc_core\tex\ui\ammo\m_X15_mixed_ca.paa";
     };
 
-    /*
-    //FAL MAGs
-    class hlc_20rnd_762x51_b_fal;
-    class hlc_20rnd_762x51_t_fal;
-    class hlc_20rnd_762x51_s_fal;
-
-    class hlc_20rnd_762x51_B_SCAR : hlc_20Rnd_762x51_B_fal {
-    descriptionshort = "Caliber: 7.62x51mm NATO<br />Rounds: 20<br />Used in: SCAR-H(Mk17)";
-    displayname = "SCAR-H Mag (Ball) 20rnd 7.62mm";
-    initspeed = 714;
-    mass = 7;
-    displaynameshort = "7.62mm Ball";
-    picture = "\hlc_core\tex\ui\ammo\m_scarhball_ca.paa";
-    };
-    class hlc_20rnd_762x51_T_SCAR : hlc_20Rnd_762x51_T_fal {
-    descriptionshort = "Caliber: 7.62x51mm NATO<br />Rounds: 20<br />Used in: SCAR-H(Mk17)";
-    displayname = "SCAR-H Mag (Tracer) 20rnd 7.62mm";
-    initspeed = 714;
-    mass = 7;
-    displaynameshort = "7.62mm Tracer";
-    picture = "\hlc_core\tex\ui\ammo\m_scarhTracer_ca.paa";
-    };
-    class hlc_20rnd_762x51_S_SCAR : hlc_20Rnd_762x51_S_fal {
-    descriptionshort = "Caliber: 7.62x51mm NATO<br />Rounds: 20<br />Used in: SCAR-H(Mk17)";
-    displayname = "SCAR-H Mag (SubSonic) 20rnd 7.62mm";
-    displaynameshort = "7.62mm Subsonic";
-    picture = "\hlc_core\tex\ui\ammo\m_scarhsubsonic_ca.paa";
-    mass = 7;
-    };
-    */
-
     // Tommy Gun Drums
     class hlc_50Rnd_45ACP_B_1921 : 30Rnd_556x45_Stanag{
         ammo = "FH_45ACP_Ball";
@@ -269,7 +238,7 @@ FAL mag = 250g*/
         displaynameshort = "M62A1 Tracer";
     };
 
-
+    //FAL MAGs
     class hlc_20Rnd_762x51_B_fal : 30Rnd_556x45_Stanag{
         dlc = "Niarms_FAL";
         author = "Toadie, Spartan0536";
@@ -471,7 +440,31 @@ FAL mag = 250g*/
         picture = "\hlc_core\tex\ui\ammo\m_falsubsonic_ca.paa";
     };
 
-    /*
+/*
+    //SCAR MAGs
+    class hlc_20rnd_762x51_B_SCAR : hlc_20Rnd_762x51_B_fal {
+    descriptionshort = "Caliber: 7.62x51mm NATO<br />Rounds: 20<br />Used in: SCAR-H(Mk17)";
+    displayname = "SCAR-H Mag (Ball) 20rnd 7.62mm";
+    initspeed = 714;
+    mass = 7;
+    displaynameshort = "7.62mm Ball";
+    picture = "\hlc_core\tex\ui\ammo\m_scarhball_ca.paa";
+    };
+    class hlc_20rnd_762x51_T_SCAR : hlc_20Rnd_762x51_T_fal {
+    descriptionshort = "Caliber: 7.62x51mm NATO<br />Rounds: 20<br />Used in: SCAR-H(Mk17)";
+    displayname = "SCAR-H Mag (Tracer) 20rnd 7.62mm";
+    initspeed = 714;
+    mass = 7;
+    displaynameshort = "7.62mm Tracer";
+    picture = "\hlc_core\tex\ui\ammo\m_scarhTracer_ca.paa";
+    };
+    class hlc_20rnd_762x51_S_SCAR : hlc_20Rnd_762x51_S_fal {
+    descriptionshort = "Caliber: 7.62x51mm NATO<br />Rounds: 20<br />Used in: SCAR-H(Mk17)";
+    displayname = "SCAR-H Mag (SubSonic) 20rnd 7.62mm";
+    displaynameshort = "7.62mm Subsonic";
+    picture = "\hlc_core\tex\ui\ammo\m_scarhsubsonic_ca.paa";
+    mass = 7;
+    };
 
     //Trenchgun loads
     class hlc_5Rnd_12G_Slug_Trench : hlc_30Rnd_545x39_T_ak {
@@ -677,7 +670,6 @@ FAL mag = 250g*/
         displaynameshort = "9x19mm Ball";
     };
 
-    /*
     class hlc_32rnd_9x19_B_MP40 : hlc_50Rnd_45ACP_B_1921 {
     ammo = "HLC_9x19_Ball";
     initspeed = 400;
@@ -817,7 +809,6 @@ FAL mag = 250g*/
         picture = "\hlc_core\tex\ui\ammo\m_deagleball_ca.paa";
     };
 
-    /*
     //Lewis Gun Pans
     class hlc_97Rnd_303_B_Lewis : hlc_30Rnd_303_B_bren {
     ammo = "HLC_303Brit_B";

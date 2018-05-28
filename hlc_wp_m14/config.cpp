@@ -5,7 +5,7 @@
 
 class CfgPatches {
     class hlcweapons_m14 {
-        requiredaddons[] = {"A3_Data_F","A3_UI_F","A3_Anims_F","A3_Anims_F_Config_Sdr","A3_Weapons_F","asdg_jointrails","hlcweapons_core"};
+        requiredaddons[] = {"hlcweapons_core"};
         units[] = {"HLC_M14_ammobox","Weapon_rifle_M14","Weapon_hlc_rifle_M21","Weapon_hlc_rifle_m14sopmod","Weapon_hlc_rifle_m14dmr","weapon_hlc_rifle_M14_Bipod","weapon_hlc_rifle_M14_Rail"};
         weapons[] = {"hlc_rifle_M14","hlc_rifle_M21","hlc_rifle_m14dmr","hlc_rifle_m14sopmod","hlc_muzzle_snds_M14","hlc_optic_artel_m14","hlc_optic_LRT_m14","hlc_optic_PVS4M14"};
         magazines[] = {"hlc_50Rnd_762x51_B_M14","hlc_20Rnd_762x51_T_M14","hlc_20Rnd_762x51_B_M14"};
@@ -242,6 +242,12 @@ class CfgMagazines {
     };
 };
 
+class CfgMagazineWells {
+    class CBA_762x51_M14 {
+        NIA_mags[] = { __762M14_MAGS };
+    };
+};
+
 class CfgWeapons {
 
 //optics
@@ -401,6 +407,7 @@ class CfgWeapons {
         model = "\hlc_wp_M14\mesh\leupold lrt\scope.p3d";
         picture = "\hlc_wp_M14\tex\ui\gear_lrt_x_ca";
         displayname = "Leupold LR/T";
+        weaponInfoType = "RscWeaponZeroing";
 
         class ItemInfo : ItemInfo {
 			mass = 14;
@@ -477,6 +484,7 @@ class CfgWeapons {
         ACE_barrelLength = 558.8;
         __AI_DISPERSION_COEF;
         magazines[] = { __762M14_MAGS, __762M14_BI_MAGS };
+        magazineWell[] = {"CBA_762x51_M14"};
         maxRecoilSway = 0.0125;
         swayDecaySpeed = 1.25;
         initspeed = -1.05;
@@ -623,7 +631,7 @@ class CfgWeapons {
         };
         class __MAGSWITCHCLASS {
             hlc_50Rnd_762x51_B_M14 = "hlc_rifle_M14_XMAG";
-            hlc_50rnd_762x51_MDIM_G3 = "hlc_rifle_M14_XMAG";
+            hlc_50Rnd_762x51_MDIM_M14 = "hlc_rifle_M14_XMAG";
             default = "hlc_rifle_M14";
         };
     };
@@ -653,7 +661,7 @@ class CfgWeapons {
         
         class __MAGSWITCHCLASS {
             hlc_50Rnd_762x51_B_M14 = "hlc_rifle_M14_Bipod_XMAG";
-            hlc_50rnd_762x51_MDIM_G3 = "hlc_rifle_M14_Bipod_XMAG";
+            hlc_50Rnd_762x51_MDIM_M14 = "hlc_rifle_M14_Bipod_XMAG";
             default = "hlc_rifle_M14_Bipod";
         };
     };
@@ -675,7 +683,7 @@ class CfgWeapons {
         };
         class __MAGSWITCHCLASS {
             hlc_50Rnd_762x51_B_M14 = "hlc_rifle_M14_Rail_XMAG";
-            hlc_50rnd_762x51_MDIM_G3 = "hlc_rifle_M14_Rail_XMAG";
+            hlc_50Rnd_762x51_MDIM_M14 = "hlc_rifle_M14_Rail_XMAG";
             default = "hlc_rifle_M14_Rail";
         };
     };
@@ -708,7 +716,7 @@ class CfgWeapons {
 
         class __MAGSWITCHCLASS {
             hlc_50Rnd_762x51_B_M14 = "hlc_rifle_M14_Bipod_Rail_XMAG";
-            hlc_50rnd_762x51_MDIM_G3 = "hlc_rifle_M14_Bipod_Rail_XMAG";
+            hlc_50Rnd_762x51_MDIM_M14 = "hlc_rifle_M14_Bipod_Rail_XMAG";
             default = "hlc_rifle_M14_Bipod_Rail";
         };
     };
@@ -781,7 +789,7 @@ class CfgWeapons {
         };
         class __MAGSWITCHCLASS {
             hlc_50Rnd_762x51_B_M14 = "hlc_rifle_M21_XMAG";
-            hlc_50rnd_762x51_MDIM_G3 = "hlc_rifle_M21_XMAG";
+            hlc_50Rnd_762x51_MDIM_M14 = "hlc_rifle_M21_XMAG";
             default = "hlc_rifle_M21";
         };
     };
@@ -807,7 +815,7 @@ class CfgWeapons {
 
         class __MAGSWITCHCLASS {
             hlc_50Rnd_762x51_B_M14 = "hlc_rifle_M21_Rail_XMAG";
-            hlc_50rnd_762x51_MDIM_G3 = "hlc_rifle_M21_Rail_XMAG";
+            hlc_50Rnd_762x51_MDIM_M14 = "hlc_rifle_M21_Rail_XMAG";
             default = "hlc_rifle_M21_Rail";
         };
     };
@@ -845,7 +853,7 @@ class CfgWeapons {
         };
         class __MAGSWITCHCLASS {
             hlc_50Rnd_762x51_B_M14 = "hlc_rifle_m14dmr_XMAG";
-            hlc_50rnd_762x51_MDIM_G3 = "hlc_rifle_m14dmr_XMAG";
+            hlc_50Rnd_762x51_MDIM_M14 = "hlc_rifle_m14dmr_XMAG";
             default = "hlc_rifle_m14dmr";
         };
     };
@@ -871,7 +879,7 @@ class CfgWeapons {
 
         class __MAGSWITCHCLASS {
             hlc_50Rnd_762x51_B_M14 = "hlc_rifle_M14dmr_Rail_XMAG";
-            hlc_50rnd_762x51_MDIM_G3 = "hlc_rifle_M14dmr_Rail_XMAG";
+            hlc_50Rnd_762x51_MDIM_M14 = "hlc_rifle_M14dmr_Rail_XMAG";
             default = "hlc_rifle_M14dmr_Rail";
         };
     };
@@ -930,7 +938,7 @@ class CfgWeapons {
         };
         class __MAGSWITCHCLASS {
             hlc_50Rnd_762x51_B_M14 = "hlc_rifle_m14sopmod_XMAG";
-            hlc_50rnd_762x51_MDIM_G3 = "hlc_rifle_m14sopmod_XMAG";
+            hlc_50Rnd_762x51_MDIM_M14 = "hlc_rifle_m14sopmod_XMAG";
             default = "hlc_rifle_m14sopmod";
         };
     };

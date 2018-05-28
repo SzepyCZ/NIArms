@@ -5,7 +5,7 @@
 
 class CfgPatches {
     class hlcweapons_g3 {
-        requiredaddons[] = {"A3_Data_F","A3_UI_F","A3_Anims_F","A3_Anims_F_Config_Sdr","A3_Weapons_F","A3_Sounds_F_Mark","asdg_jointrails","hlcweapons_core"};
+        requiredaddons[] = {"hlcweapons_core"};
         units[] = { "HLC_G3_ammobox", "Weapon_hlc_rifle_psg1", "Weapon_hlc_rifle_g3sg1","Weapon_hlc_rifle_g3ka4","Weapon_hlc_rifle_hk51","Weapon_HLC_Rifle_g3ka4_GL","Weapon_hlc_rifle_hk53","Weapon_hlc_rifle_G3A3","Weapon_hlc_rifle_g3a3ris" };
         weapons[] = {"hlc_rifle_psg1","hlc_rifle_g3sg1","HLC_Optic_ZFSG1","hlc_optic_accupoint_g3","hlc_rifle_g3ka4", "hlc_rifle_hk51","HLC_Rifle_g3ka4_GL","hlc_rifle_hk53", "hlc_optic_PVS4G3"};
         magazines[] = {"hlc_20rnd_762x51_b_G3","hlc_20rnd_762x51_t_G3", "hlc_30rnd_556x45_EPR_HK33","hlc_30rnd_556x45_SOST_HK33","hlc_30rnd_556x45_b_HK33","hlc_30rnd_556x45_t_HK33"};
@@ -484,6 +484,15 @@ class CfgMagazines {
     };
 };
 
+class CfgMagazineWells {
+    class CBA_762x51_G3 {
+        NIA_mags[] = { __762G3_MAGS };
+    };
+    class CBA_556x45_HK33 {
+        NIA_mags[] = { __556HK33_MAGS };
+    };
+};
+
 class CfgWeapons {
 
 //muzzles
@@ -667,10 +676,7 @@ class CfgWeapons {
         };
 		inertia = 0.22;
     };
-    class hlc_optic_ZF4xBase:optic_arco
-    {
-        class ItemInfo;
-    };
+    class hlc_optic_ZF4xBase;
     class hlc_optic_STANAGZF2D_G3: hlc_optic_ZF4xBase
     {
                 author = "Krycek,Toadie";
@@ -821,6 +827,7 @@ class CfgWeapons {
         hasBipod = false;
         scope = protected;
         magazines[] = { __762G3_MAGS };
+        magazineWell[] = {"CBA_762x51_G3"};
         class Library {
             libTextDesc = "G3Base";
         };
@@ -1589,9 +1596,8 @@ class CfgWeapons {
         cse_bipod = 0;
         bg_bipod = 0;
         initspeed = -0.85;
-        magazines[] = {
-            "hlc_30rnd_556x45_b_hk33", "hlc_30rnd_556x45_t_hk33", "hlc_30rnd_556x45_epr_hk33", "hlc_30rnd_556x45_sost_hk33", "hlc_30rnd_556x45_tdim_HK33", "hlc_30rnd_556x45_mdim_HK33", "hlc_30rnd_556x45_SPR_HK33"
-        };
+        magazines[] = { __556HK33_MAGS };
+        magazineWell[] = {"CBA_556x45_HK33"};
         discreteDistance[] = { 100, 200, 300, 400 };
         model = "\hlc_wp_g3\mesh\hene_hk53\hk53.p3d";
         picture = "\hlc_wp_g3\tex\ui\gear_hk53_x_ca";
@@ -1749,9 +1755,8 @@ class CfgWeapons {
         agm_bipod = 0;
         cse_bipod = 0;
         bg_bipod = 0;
-        magazines[] = {
-            "hlc_30rnd_556x45_b_hk33", "hlc_30rnd_556x45_t_hk33", "hlc_30rnd_556x45_epr_hk33", "hlc_30rnd_556x45_sost_hk33", "hlc_30rnd_556x45_tdim_HK33", "hlc_30rnd_556x45_mdim_HK33"
-        };
+        magazines[] = { __556HK33_MAGS };
+        magazineWell[] = {"CBA_556x45_HK33"};
         discreteDistance[] = { 100, 200, 300, 400 };
         //cameradir = "Look";
         //discreteDistanceCameraPoint[] = { "eye", "eye2", "eye3", "eye4" }; /// the angle of gun changes with zeroing

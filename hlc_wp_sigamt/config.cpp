@@ -6,7 +6,7 @@ class CfgPatches
 {
     class hlcweapons_stgw57
     {
-        requiredaddons[] = { "A3_Data_F", "A3_UI_F", "A3_Anims_F", "A3_Anims_F_Config_Sdr", "A3_Weapons_F", "A3_Weapons_F_Acc", "A3_Sounds_F_Mark", "asdg_jointrails", "hlcweapons_core" };
+        requiredaddons[] = { "hlcweapons_core" };
         units[] = { "HLC_SG510_ammobox", "Weapon_rifle_stgw57ris", "Weapon_rifle_stgw57", "weapon_rifle_stgw57_commando", "weapon_rifle_sig5104", "weapon_rifle_amt" };
         weapons[] = { "hlc_rifle_STGW57", "hlc_rifle_stgw57_RIS", "hlc_rifle_stgw57_commando", "hlc_rifle_sig5104", "hlc_rifle_amt", "hlc_optic_Kern", "hlc_optic_Kern2d" };
         magazines[] = { "hlc_24Rnd_75x55_B_stgw", "hlc_24Rnd_75x55_ap_stgw", "hlc_20Rnd_762x51_b_amt", "hlc_20Rnd_762x51_mk316_amt", "hlc_20Rnd_762x51_bball_amt", "hlc_20Rnd_762x51_T_amt" };
@@ -488,6 +488,15 @@ class CfgMagazines {
 
 };
 
+class CfgMagazineWells {
+    class CBA_75x55_STGW57 {
+        NIA_mags[] = { "hlc_24Rnd_75x55_B_stgw", "hlc_24Rnd_75x55_ap_stgw", "hlc_24Rnd_75x55_T_stgw" };
+    };
+    class CBA_762x51_SIGAMT {
+        NIA_mags[] = { "hlc_20Rnd_762x51_b_amt", "hlc_20Rnd_762x51_mk316_amt", "hlc_20Rnd_762x51_bball_amt", "hlc_20Rnd_762x51_T_amt" };
+    };
+};
+
 class CfgWeapons {
     class Rifle;
     class Rifle_Base_F : Rifle
@@ -596,6 +605,7 @@ class CfgWeapons {
         magazines[] = {
             "hlc_24Rnd_75x55_B_stgw", "hlc_24Rnd_75x55_ap_stgw", "hlc_24Rnd_75x55_T_stgw"
         };
+        magazineWell[] = {"CBA_75x55_STGW57"};
         class Library
         {
             libTextDesc = "SIG Stgw.510";
@@ -804,6 +814,7 @@ class CfgWeapons {
         magazines[] = {
             "hlc_20Rnd_762x51_b_amt", "hlc_20Rnd_762x51_mk316_amt", "hlc_20Rnd_762x51_bball_amt", "hlc_20Rnd_762x51_T_amt"
         };
+        magazineWell[] = {"CBA_762x51_SIGAMT"};
         descriptionShort = "Infantry Service Rifle<br/>Caliber: 7.62x51mm NATO";
         reloadAction = "HLC_GestureReloadAMT";
         handanim[] = { "OFP2_ManSkeleton", "hlc_wp_sigamt\anim\hand_stgw57.rtm" };

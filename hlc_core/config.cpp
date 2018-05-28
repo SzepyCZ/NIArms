@@ -3,7 +3,7 @@
 
 class CfgPatches {
     class hlcweapons_core {
-        requiredaddons[] = {"A3_Data_F","A3_UI_F","A3_Anims_F","A3_Anims_F_Config_Sdr","A3_Weapons_F","cba_main","cba_jr"};
+        requiredaddons[] = {"A3_Data_F_Tank_Loadorder","cba_main","cba_jr","cba_jam"};
         units[] = {};
         weapons[] = {};
         magazines[] = {};
@@ -18,7 +18,7 @@ class CfgPatches {
 #include "CfgMagazines.hpp"  
 #include "CfgFunctions.hpp"
 #include "CfgEventhandlers.hpp"
-
+#include "CfgMagazineWells.hpp"
 
 class asdg_MuzzleSlot;
 class asdg_MuzzleSlot_762 : asdg_MuzzleSlot {
@@ -1729,6 +1729,7 @@ class CfgWeapons
         picture = "\hlc_core\tex\ui\gear_LeupoldM3A_Ca";
         model = "hlc_core\mesh\accessories\sights\LeupoldM3A.p3d";
         displayname = "Leupold M3A";
+        weaponInfoType = "RscWeaponZeroing";
 
         class ItemInfo : ItemInfo {
             mass = 10.5;
@@ -1770,11 +1771,13 @@ class CfgWeapons
         tmr_optics_enhanced = 0; //prevent tmr_optics ARCO overlay from displaying
         inertia = 0.05;
     };
-class hlc_optic_PVS4base : optic_Arco {
+    class hlc_optic_PVS4base : optic_Arco {
         author = "Bohemia Interactive, Toadie";
         descriptionshort = "Night Vision Optic<br />Magnification: 4x";
+        weaponInfoType = "RscWeaponZeroing";
         displayname = "AN/PVS4";
         picture = "\hlc_core\tex\ui\gear_PVS4_x_ca";
+
         class ItemInfo : InventoryOpticsItem_Base_F {
             __OPTIC_DMR;
             mass = 49.6;
@@ -1830,6 +1833,8 @@ class hlc_optic_PVS4base : optic_Arco {
         displayname = "VOMZ Pilad P3(2D)";
         picture = "\hlc_core\tex\ui\gear_vomz_ca";
         inertia = 0.05;
+        weaponInfoType = "RscWeaponZeroing";
+
         class ItemInfo : ItemInfo {
             mass = 11;
             class OpticsModes {
@@ -1964,7 +1969,7 @@ class hlc_optic_PVS4base : optic_Arco {
         inertia = 0.04;
         tmr_optics_enhanced = 0;
     };
- class hlc_optic_ZF4xBase : optic_aco
+    class hlc_optic_ZF4xBase : optic_aco
     {
         dlc = "Niarms_Core";
         scope = public;
@@ -2031,7 +2036,9 @@ class hlc_optic_PVS4base : optic_Arco {
         scope = public;
          __OPTIC_DMR;
          inertia = 0.052;
-         class ItemInfo : ItemInfo
+        weaponInfoType = "RscWeaponZeroing";
+
+        class ItemInfo : ItemInfo
          {
              mass = 14.54;
              class OpticsModes
@@ -2091,6 +2098,8 @@ class hlc_optic_PVS4base : optic_Arco {
         displayname = "Docter RDS";
         model = "hlc_core\mesh\accessories\sights\docter.p3d";
         picture = "\hlc_core\tex\UI\gear_docter_ca.paa";
+        weaponInfoType = "RscWeaponZeroing";
+
         class ItemInfo : InventoryOpticsItem_Base_F {
             mass = 4;
             modelOptics = "\A3\Weapons_F\empty";
@@ -2124,6 +2133,8 @@ class hlc_optic_PVS4base : optic_Arco {
         displayname = "Romeo1 RDS";
         model = "hlc_core\mesh\accessories\sights\romeo1.p3d";
         picture = "\hlc_core\tex\UI\gear_romeo1_ca.paa";
+        weaponInfoType = "RscWeaponZeroing";
+
         class ItemInfo : InventoryOpticsItem_Base_F {
             mass = 4;
             modelOptics = "\A3\Weapons_F\empty";
@@ -2149,23 +2160,5 @@ class hlc_optic_PVS4base : optic_Arco {
             };
         };
         tmr_optics_enhanced = 0; //prevent tmr_optics ARCO overlay from displaying
-    };
-
-    // vanilla compat
-    class Rifle_Base_F;
-    class mk20_base_F : Rifle_Base_F {
-        magazines[] += { __556STANAG_MAGS };
-    };
-    class SDAR_base_F : Rifle_Base_F {
-        magazines[] += { __556STANAG_MAGS };
-    };
-    class Tavor_base_F : Rifle_Base_F {
-        magazines[] += { __556STANAG_MAGS };
-    };
-    class arifle_SPAR_01_base_F : Rifle_Base_F {
-        magazines[] += { __556STANAG_MAGS };
-    };
-    class arifle_SPAR_02_base_F : Rifle_Base_F {
-        magazines[] += { __556STANAG_MAGS };
     };
 };

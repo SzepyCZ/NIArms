@@ -7,7 +7,7 @@ class CfgPatches
 {
     class hlcweapons_MG3s
     {
-        requiredaddons[] = { "A3_Data_F", "A3_UI_F", "A3_Anims_F", "A3_Anims_F_Config_Sdr", "A3_Weapons_F", "A3_Sounds_F_Mark", "cba_jr", "hlcweapons_core" };
+        requiredaddons[] = { "hlcweapons_core" };
         units[] = { "HLC_MG3_ammobox", "HLC_MG42_ammobox", "Weapon_hlc_lmg_MG42", "Weapon_hlc_lmg_mg42_bakelite", "Weapon_hlc_lmg_MG42KWS_t","Weapon_hlc_lmg_MG42KWS_t", "Weapon_hlc_lmg_MG42KWS_g","Weapon_hlc_lmg_MG42KWS_b","Weapon_hlc_lmg_MG3","Weapon_hlc_lmg_MG3_optic","Weapon_hlc_lmg_MG3KWS_t","Weapon_hlc_lmg_MG3KWS_g","Weapon_hlc_lmg_MG3KWS_b" };
         weapons[] = {"hlc_lmg_MG42","hlc_lmg_mg42_bakelite","hlc_lmg_MG42KWS_t","hlc_lmg_MG42KWS_g","hlc_lmg_MG42KWS_B","hlc_lmg_MG3","hlc_lmg_MG3_optic","hlc_lmg_MG3KWS","hlc_lmg_MG3KWS_b","hlc_lmg_MG3KWS_g"};
         magazines[] = {};
@@ -642,6 +642,15 @@ class CfgMagazines{
     };
 };
 
+class CfgMagazineWells {
+    class CBA_792x57_LINKS {
+        NIA_belts[] = { __792MG42_MAGS };
+    };
+    class CBA_762x51_LINKS {
+        NIA_belts[] = { __762MG3_MAGS };
+    };
+};
+
 class CfgWeapons {
     class Rifle;
 
@@ -875,6 +884,7 @@ class CfgWeapons {
         {
             libTextDesc = "MG42";
         };
+        magazineWell[] = {"CBA_792x57_LINKS"};
     };
     class hlc_lmg_mg42_bakelite :hlc_lmg_mg42
     {
@@ -938,6 +948,7 @@ class CfgWeapons {
         __DEXTERITY(10.5,-3);
         hiddenSelectionsTextures[] = { "\hlc_wp_mg3\tex\Standard\MG3reciever_co.paa", "\hlc_wp_mg3\tex\Standard\partsmap1_Co.paa", "\hlc_wp_mg3\tex\Standard\partsmap2plastic_co.paa", "\hlc_wp_mg3\tex\Standard\partsmap3_co.paa", "\hlc_wp_mg3\tex\standard\MG3_drum_co.tga" };
         magazines[] = { __762MG3_MAGS, __762NATO_BELTS };
+        magazineWell[] = {"CBA_762x51_LINKS"};
         discretedistance[] = { 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100 };
         //cameradir = "aim_point";
         //discreteDistanceCameraPoint[] = { "eye3", "eye4", "eye5", "eye6", "eye7", "eye8", "eye9", "eye10", "eye11" }; /// the angle of gun changes with zeroing

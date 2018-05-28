@@ -5,7 +5,7 @@ class CfgPatches
 {
  class hlcweapons_acr
  {
-     requiredaddons[] = { "A3_Data_F", "A3_UI_F", "A3_Anims_F", "A3_Anims_F_Config_Sdr", "A3_Weapons_F", "A3_Weapons_F_Acc", "A3_Sounds_F_Mark", "asdg_jointrails", "hlcweapons_core" };
+    requiredaddons[] = { "hlcweapons_core" };
 	units[] = {  };
 	weapons[] = {"hlc_rifle_ACR"};
 	magazines[] = {};
@@ -324,6 +324,21 @@ class hlc_30rnd_68x43_Sub : hlc_30rnd_68x43_Tracer
     picture = "\hlc_core\tex\ui\ammo\m_blackout_sub_ca.paa";
 };
 };
+
+class CfgMagazineWells {
+    class CBA_68x43_ACR {
+        NIA_mags[] = {
+            "hlc_30rnd_68x43_FMJ",
+            "hlc_30rnd_68x43_OTM",
+            "hlc_30rnd_68x43_Tracer",
+            "hlc_30rnd_68x43_MIRDIM",
+            "hlc_30rnd_68x43_MFMJ",
+            "hlc_30rnd_68x43_IRDIM",
+            "hlc_30rnd_68x43_Sub"
+        };
+    };
+};
+
 class CfgWeapons {
     class Rifle;
     class Rifle_Base_F : Rifle  {
@@ -363,6 +378,7 @@ class hlc_muzzle_apology : muzzle_snds_H {
     };
     inertia = 0.00;
 };
+
 class hlc_acr_base : Rifle_Base_F {
     magazineReloadSwitchPhase = 0.5;
     scope = protected;
@@ -370,7 +386,8 @@ class hlc_acr_base : Rifle_Base_F {
     ACE_barrelLength = 292.1;
     aidispersioncoefx = 4;
     aidispersioncoefy = 6;
-    magazines[] = { "hlc_30rnd_68x43_FMJ", "hlc_30rnd_68x43_OTM", "hlc_30rnd_68x43_MFMJ", "hlc_30rnd_68x43_MIRDIM", "hlc_30rnd_68x43_Tracer", "hlc_30rnd_68x43_IRDIM","hlc_30rnd_68x43_Sub" };
+    magazines[] = { "hlc_30rnd_68x43_FMJ", "hlc_30rnd_68x43_OTM", "hlc_30rnd_68x43_MFMJ", "hlc_30rnd_68x43_MIRDIM", "hlc_30rnd_68x43_Tracer", "hlc_30rnd_68x43_IRDIM", "hlc_30rnd_68x43_Sub" };
+    magazineWell[] = {"CBA_68x43_ACR"};
     class Library {
         libTextDesc = "ACR";
     };
@@ -378,7 +395,7 @@ class hlc_acr_base : Rifle_Base_F {
     maxRecoilSway = 0.0125;
     swayDecaySpeed = 1.25;
     hiddenSelections[] = { "Map1", "Map2", "Reciever", "Forgotten_Things", "PMAG", "AFG2" };
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co.tga", "hlc_wp_ACR\tex\map2_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co", "hlc_wp_ACR\tex\map2_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     HiddenSelectionsMaterials[] = { "hlc_wp_ACR\mat\map1.rvmat", "hlc_wp_ACR\mat\map2.rvmat", "hlc_wp_ACR\mat\map3.rvmat", "hlc_wp_ACR\mat\mapyes.rvmat", "hlc_wp_ACR\mat\PMAG.rvmat", "hlc_wp_ACR\mat\afg.rvmat" };
     class GunParticles : GunParticles {
         class SecondEffect {
@@ -523,17 +540,13 @@ class hlc_rifle_ACR68_SBR_tan : hlc_acr_base
 	discretedistance[] = {100};
 	discretedistanceinitindex = 0;
 	bg_bipod = 0; 
-        magazines[] = { "hlc_30rnd_68x43_FMJ", "hlc_30rnd_68x43_OTM", "hlc_30rnd_68x43_MFMJ", "hlc_30rnd_68x43_MIRDIM", "hlc_30rnd_68x43_Tracer", "hlc_30rnd_68x43_IRDIM" };
-        hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co.tga", "hlc_wp_ACR\tex\map2-68tan_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co", "hlc_wp_ACR\tex\map2-68tan_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
         HiddenSelectionsMaterials[] = { "hlc_wp_ACR\mat\map1.rvmat", "hlc_wp_ACR\mat\map2.rvmat", "hlc_wp_ACR\mat\map3.rvmat", "hlc_wp_ACR\mat\mapyes.rvmat", "hlc_wp_ACR\mat\PMAG.rvmat", "hlc_wp_ACR\mat\afg.rvmat" };
 	reloadMagazineSound[] = {"hlc_wp_acr\snd\ACR_reload",0.9,1,30};
 	handAnim[] = {
 		"OFP2_ManSkeleton",
 		"\hlc_wp_acr\anim\acr_handanim.rtm"
 	};
-	opticszoominit = 0.75;
-	opticszoommax = 1.1;
-	opticszoommin = 0.25;
     inertia = 0.36;
     __DEXTERITY(3.6 + 0.1, 1); //afg,kx3
         class WeaponSlotsInfo: WeaponSlotsInfo
@@ -652,7 +665,7 @@ class hlc_rifle_ACR68_SBR_black :hlc_rifle_ACR68_SBR_tan {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E 6.8mm (Compact/Black)";
     picture = "\hlc_wp_acr\tex\ui\gear_sbr-black_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co.tga", "hlc_wp_ACR\tex\map2-68black_co.tga", "hlc_wp_ACR\tex\map3-black_co.tga", "hlc_wp_ACR\tex\mapyesblack_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co", "hlc_wp_ACR\tex\map2-68black_co", "hlc_wp_ACR\tex\map3-black_co", "hlc_wp_ACR\tex\mapyesblack_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
 };
 class hlc_rifle_ACR68_SBR_green :hlc_rifle_ACR68_SBR_tan {
     ACE_barrelTwist = 177.8;
@@ -661,7 +674,7 @@ class hlc_rifle_ACR68_SBR_green :hlc_rifle_ACR68_SBR_tan {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E 6.8mm (Compact/Green)";
     picture = "\hlc_wp_acr\tex\ui\gear_sbr-green_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co.tga", "hlc_wp_ACR\tex\map2-68green_co.tga", "hlc_wp_ACR\tex\map3-green_co.tga", "hlc_wp_ACR\tex\mapyesGreen_co.tga", "hlc_wp_ACR\tex\pmagGreen_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co", "hlc_wp_ACR\tex\map2-68green_co", "hlc_wp_ACR\tex\map3-green_co", "hlc_wp_ACR\tex\mapyesGreen_co", "hlc_wp_ACR\tex\pmagGreen_co", "hlc_wp_ACR\tex\afg2_co" };
 };
 class hlc_rifle_ACR68_Carb_black :hlc_rifle_ACR68_SBR_tan
 {
@@ -671,7 +684,7 @@ class hlc_rifle_ACR68_Carb_black :hlc_rifle_ACR68_SBR_tan
     model = "hlc_wp_acr\mesh\acr\ACR_Carbine.p3d";
     displayName = "Remington ACR-E 6.8mm (Short/Black)";
     picture = "\hlc_wp_acr\tex\ui\gear_carbine-black_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co.tga", "hlc_wp_ACR\tex\map2-68black_co.tga", "hlc_wp_ACR\tex\map3-black_co.tga", "hlc_wp_ACR\tex\mapyesblack_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co", "hlc_wp_ACR\tex\map2-68black_co", "hlc_wp_ACR\tex\map3-black_co", "hlc_wp_ACR\tex\mapyesblack_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     inertia = 0.39;
     __DEXTERITY(3.9 + 0.1, 1); //afg,kx3
         class WeaponSlotsInfo: WeaponSlotsInfo
@@ -697,7 +710,7 @@ class hlc_rifle_ACR68_Carb_tan :hlc_rifle_ACR68_Carb_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E 6.8mm (Short/Tan)";
     picture = "\hlc_wp_acr\tex\ui\gear_carbine-tan_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co.tga", "hlc_wp_ACR\tex\map2-68tan_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co", "hlc_wp_ACR\tex\map2-68tan_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
 };
 class hlc_rifle_ACR68_Carb_green :hlc_rifle_ACR68_Carb_black {\
     ACE_barrelTwist = 177.8;
@@ -706,7 +719,7 @@ class hlc_rifle_ACR68_Carb_green :hlc_rifle_ACR68_Carb_black {\
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E 6.8mm (Short/Green)";
     picture = "\hlc_wp_acr\tex\ui\gear_carbine-green_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co.tga", "hlc_wp_ACR\tex\map2-68green_co.tga", "hlc_wp_ACR\tex\map3-green_co.tga", "hlc_wp_ACR\tex\mapyesGreen_co.tga", "hlc_wp_ACR\tex\pmagGreen_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co", "hlc_wp_ACR\tex\map2-68green_co", "hlc_wp_ACR\tex\map3-green_co", "hlc_wp_ACR\tex\mapyesGreen_co", "hlc_wp_ACR\tex\pmagGreen_co", "hlc_wp_ACR\tex\afg2_co" };
 };
 class hlc_rifle_ACR68_mid_black :hlc_rifle_ACR68_SBR_tan
 {
@@ -716,7 +729,7 @@ class hlc_rifle_ACR68_mid_black :hlc_rifle_ACR68_SBR_tan
     model = "hlc_wp_acr\mesh\acr\ACR_midlength.p3d";
     displayName = "Remington ACR-E 6.8mm (Mid/Black)";
     picture = "\hlc_wp_acr\tex\ui\gear_mid-black_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co.tga", "hlc_wp_ACR\tex\map2-68black_co.tga", "hlc_wp_ACR\tex\map3-black_co.tga", "hlc_wp_ACR\tex\mapyesblack_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co", "hlc_wp_ACR\tex\map2-68black_co", "hlc_wp_ACR\tex\map3-black_co", "hlc_wp_ACR\tex\mapyesblack_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     inertia = 0.42;
     __DEXTERITY(4.1 + 0.1, 1); //afg,kx3
     
@@ -743,7 +756,7 @@ class hlc_rifle_ACR68_mid_tan :hlc_rifle_ACR68_mid_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E 6.8mm (Mid/Tan)";
     picture = "\hlc_wp_acr\tex\ui\gear_mid-tan_ca";
-    hiddenSelectionsTextures[] = {  "hlc_wp_ACR\tex\map1_co.tga", "hlc_wp_ACR\tex\map2-68tan_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga"  };
+    hiddenSelectionsTextures[] = {  "hlc_wp_ACR\tex\map1_co", "hlc_wp_ACR\tex\map2-68tan_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co"  };
 };
 class hlc_rifle_ACR68_mid_green :hlc_rifle_ACR68_mid_black {
     ACE_barrelTwist = 177.8;
@@ -752,7 +765,7 @@ class hlc_rifle_ACR68_mid_green :hlc_rifle_ACR68_mid_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E 6.8mm (Mid/Green)";
     picture = "\hlc_wp_acr\tex\ui\gear_mid-green_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co.tga", "hlc_wp_ACR\tex\map2-68green_co.tga", "hlc_wp_ACR\tex\map3-green_co.tga", "hlc_wp_ACR\tex\mapyesGreen_co.tga", "hlc_wp_ACR\tex\pmagGreen_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co", "hlc_wp_ACR\tex\map2-68green_co", "hlc_wp_ACR\tex\map3-green_co", "hlc_wp_ACR\tex\mapyesGreen_co", "hlc_wp_ACR\tex\pmagGreen_co", "hlc_wp_ACR\tex\afg2_co" };
 };
 class hlc_rifle_ACR68_full_black :hlc_rifle_ACR68_SBR_tan
 {
@@ -762,7 +775,7 @@ class hlc_rifle_ACR68_full_black :hlc_rifle_ACR68_SBR_tan
     model = "hlc_wp_acr\mesh\acr\ACR_riflelength.p3d";
     displayName = "Remington ACR-E 6.8mm (Long/Black)";
     picture = "\hlc_wp_acr\tex\ui\gear_rifle-black_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co.tga", "hlc_wp_ACR\tex\map2-68black_co.tga", "hlc_wp_ACR\tex\map3-black_co.tga", "hlc_wp_ACR\tex\mapyesblack_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co", "hlc_wp_ACR\tex\map2-68black_co", "hlc_wp_ACR\tex\map3-black_co", "hlc_wp_ACR\tex\mapyesblack_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     inertia = 0.45;
     __DEXTERITY(4.4 + 0.1, 1); //afg,kx3
         class WeaponSlotsInfo: WeaponSlotsInfo
@@ -788,7 +801,7 @@ class hlc_rifle_ACR68_full_tan :hlc_rifle_ACR68_full_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E 6.8mm (Long/Tan)";
     picture = "\hlc_wp_acr\tex\ui\gear_rifle-tan_ca";
-    hiddenSelectionsTextures[] = {  "hlc_wp_ACR\tex\map1_co.tga", "hlc_wp_ACR\tex\map2-68tan_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga"  };
+    hiddenSelectionsTextures[] = {  "hlc_wp_ACR\tex\map1_co", "hlc_wp_ACR\tex\map2-68tan_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co"  };
 };
 class hlc_rifle_ACR68_full_green :hlc_rifle_ACR68_full_black {
     ACE_barrelTwist = 177.8;
@@ -797,7 +810,7 @@ class hlc_rifle_ACR68_full_green :hlc_rifle_ACR68_full_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E 6.8mm (Long/Green)";
     picture = "\hlc_wp_acr\tex\ui\gear_sbr-tan_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co.tga", "hlc_wp_ACR\tex\map2-68green_co.tga", "hlc_wp_ACR\tex\map3-green_co.tga", "hlc_wp_ACR\tex\mapyesGreen_co.tga", "hlc_wp_ACR\tex\pmagGreen_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co", "hlc_wp_ACR\tex\map2-68green_co", "hlc_wp_ACR\tex\map3-green_co", "hlc_wp_ACR\tex\mapyesGreen_co", "hlc_wp_ACR\tex\pmagGreen_co", "hlc_wp_ACR\tex\afg2_co" };
 };
 class hlc_rifle_ACR68_Squant : hlc_rifle_ACR68_SBR_tan
 {
@@ -806,7 +819,7 @@ class hlc_rifle_ACR68_Squant : hlc_rifle_ACR68_SBR_tan
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E 6.8mm (Compact/Tan SQ)";
     picture = "\hlc_wp_acr\tex\ui\gear_sbr-tan_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1squant_co.tga", "hlc_wp_ACR\tex\map2-68tan_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1squant_co", "hlc_wp_ACR\tex\map2-68tan_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     HiddenSelectionsMaterials[] = { "hlc_wp_ACR\mat\map1sq.rvmat", "hlc_wp_ACR\mat\map2.rvmat", "hlc_wp_ACR\mat\map3.rvmat", "hlc_wp_ACR\mat\mapyes.rvmat", "hlc_wp_ACR\mat\PMAG.rvmat", "hlc_wp_ACR\mat\afg.rvmat" };
     class WeaponSlotsInfo : WeaponSlotsInfo {
         class MuzzleSlot : asdg_MuzzleSlot_762{
@@ -822,7 +835,7 @@ class hlc_rifle_ACR68_aron :hlc_rifle_ACR68_Carb_black
     model = "hlc_wp_acr\mesh\acr\ACR_aron.p3d";
     displayName = "Remington ACR-E 6.8mm (Short/Black AR)";
     picture = "\hlc_wp_acr\tex\ui\gear_carbine-black_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1Aron_co.tga", "hlc_wp_ACR\tex\map2-68black_co.tga", "hlc_wp_ACR\tex\map3-black_co.tga", "hlc_wp_ACR\tex\mapyesblack_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1Aron_co", "hlc_wp_ACR\tex\map2-68black_co", "hlc_wp_ACR\tex\map3-black_co", "hlc_wp_ACR\tex\mapyesblack_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     HiddenSelectionsMaterials[] = { "hlc_wp_ACR\mat\map1aron.rvmat", "hlc_wp_ACR\mat\map2.rvmat", "hlc_wp_ACR\mat\map3.rvmat", "hlc_wp_ACR\mat\mapyes.rvmat", "hlc_wp_ACR\mat\PMAG.rvmat", "hlc_wp_ACR\mat\afg.rvmat" };
     inertia = 0.39;
     __DEXTERITY(3.9 + 0.1, 1); //afg,kx3
@@ -849,12 +862,13 @@ class hlc_rifle_ACR68_aron :hlc_rifle_ACR68_Carb_black
 
 class hlc_acr556_base : hlc_acr_base
 {
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co.tga", "hlc_wp_ACR\tex\map2_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co", "hlc_wp_ACR\tex\map2_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     //    HiddenSelectionsMaterials[] = { "hlc_wp_ACR\mat\map1.rvmat", "hlc_wp_ACR\mat\map2.rvmat", "hlc_wp_ACR\mat\map3.rvmat", "hlc_wp_ACR\mat\mapyes.rvmat", "hlc_wp_ACR\mat\PMAG.rvmat", "hlc_wp_ACR\mat\afg.rvmat" };
     class WeaponSlotsInfo : WeaponSlotsInfo {
         class MuzzleSlot : asdg_MuzzleSlot_556{};
     };
     magazines[] = { __556STANAG_MAGS, __556STANAG_BI_MAGS, __556NATO_BI_DRUMS };
+    magazineWell[] = {"CBA_556x45_STANAG"};
 
     modes[] = { "Single", "FullAuto", "fullauto_medium", "single_medium_optics1", "single_far_optics2" };
 
@@ -953,16 +967,13 @@ class hlc_rifle_ACR_SBR_tan : hlc_acr556_base
     discretedistance[] = { 100 };
     discretedistanceinitindex = 0;
     bg_bipod = 0;
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co.tga", "hlc_wp_ACR\tex\map2-556tan_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co", "hlc_wp_ACR\tex\map2-556tan_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     HiddenSelectionsMaterials[] = { "hlc_wp_ACR\mat\map1.rvmat", "hlc_wp_ACR\mat\map2.rvmat", "hlc_wp_ACR\mat\map3.rvmat", "hlc_wp_ACR\mat\mapyes.rvmat", "hlc_wp_ACR\mat\PMAG.rvmat", "hlc_wp_ACR\mat\afg.rvmat" };
     reloadMagazineSound[] = { "hlc_wp_acr\snd\ACR_reload", 0.74, 1, 30 };
     handAnim[] = {
         "OFP2_ManSkeleton",
         "\hlc_wp_acr\anim\acr_handanim.rtm"
     };
-    opticszoominit = 0.75;
-    opticszoommax = 1.1;
-    opticszoommin = 0.25;
     inertia = 0.36;
     __DEXTERITY(3.6 + 0.1, 1); //afg,kx3
     class WeaponSlotsInfo : WeaponSlotsInfo
@@ -1071,7 +1082,7 @@ class hlc_rifle_ACR_SBR_black :hlc_rifle_ACR_SBR_tan {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E (Compact/Black)";
     picture = "\hlc_wp_acr\tex\ui\gear_sbr-black_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co.tga", "hlc_wp_ACR\tex\map2-556black_co.tga", "hlc_wp_ACR\tex\map3-black_co.tga", "hlc_wp_ACR\tex\mapyesblack_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co", "hlc_wp_ACR\tex\map2-556black_co", "hlc_wp_ACR\tex\map3-black_co", "hlc_wp_ACR\tex\mapyesblack_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     class __MAGSWITCHCLASS {
         hlc_50rnd_556x45_EPR = "hlc_rifle_ACR_SBR_black_x15";
         default = "hlc_rifle_ACR_SBR_black";
@@ -1094,7 +1105,7 @@ class hlc_rifle_ACR_SBR_green :hlc_rifle_ACR_SBR_tan {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E (Compact/Green)";
     picture = "\hlc_wp_acr\tex\ui\gear_sbr-green_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co.tga", "hlc_wp_ACR\tex\map2-556green_co.tga", "hlc_wp_ACR\tex\map3-green_co.tga", "hlc_wp_ACR\tex\mapyesGreen_co.tga", "hlc_wp_ACR\tex\pmagGreen_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co", "hlc_wp_ACR\tex\map2-556green_co", "hlc_wp_ACR\tex\map3-green_co", "hlc_wp_ACR\tex\mapyesGreen_co", "hlc_wp_ACR\tex\pmagGreen_co", "hlc_wp_ACR\tex\afg2_co" };
     class __MAGSWITCHCLASS {
         hlc_50rnd_556x45_EPR = "hlc_rifle_ACR_SBR_green_x15";
         default = "hlc_rifle_ACR_SBR_green";
@@ -1118,7 +1129,7 @@ class hlc_rifleACR_SBR_cliffhanger :hlc_rifle_ACR_SBR_tan {
     displayName = "Remington ACR-E ('Cliffhanger')";
     descriptionShort = "Assault Rifle<br/>'Break's over, Roach.'";
     picture = "\hlc_wp_acr\tex\ui\gear_SBR-cliffhanger_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1cliffhanger_co.tga", "hlc_wp_ACR\tex\map2-68black_co.tga", "hlc_wp_ACR\tex\map3cliffhanger_co.tga", "hlc_wp_ACR\tex\mapyesblack_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1cliffhanger_co", "hlc_wp_ACR\tex\map2-68black_co", "hlc_wp_ACR\tex\map3cliffhanger_co", "hlc_wp_ACR\tex\mapyesblack_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     HiddenSelectionsMaterials[] = { "hlc_wp_ACR\mat\map1cliffhanger.rvmat", "hlc_wp_ACR\mat\map2.rvmat", "hlc_wp_ACR\mat\map3cliffhanger.rvmat", "hlc_wp_ACR\mat\mapyes.rvmat", "hlc_wp_ACR\mat\PMAG.rvmat", "hlc_wp_ACR\mat\afg.rvmat" };
     class __MAGSWITCHCLASS {
         hlc_50rnd_556x45_EPR = "hlc_rifleACR_SBR_cliffhanger_x15";
@@ -1143,7 +1154,7 @@ class hlc_rifle_ACR_Carb_black :hlc_rifle_ACR_SBR_tan
     model = "hlc_wp_acr\mesh\acr\ACR_Carbine.p3d";
     displayName = "Remington ACR-E (Short/Black)";
     picture = "\hlc_wp_acr\tex\ui\gear_carbine-black_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co.tga", "hlc_wp_ACR\tex\map2-68black_co.tga", "hlc_wp_ACR\tex\map3-black_co.tga", "hlc_wp_ACR\tex\mapyesblack_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co", "hlc_wp_ACR\tex\map2-68black_co", "hlc_wp_ACR\tex\map3-black_co", "hlc_wp_ACR\tex\mapyesblack_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     inertia = 0.39;
     __DEXTERITY(3.9 + 0.1, 1); //afg,kx3
         class WeaponSlotsInfo: WeaponSlotsInfo
@@ -1182,7 +1193,7 @@ class hlc_rifle_ACR_Carb_tan :hlc_rifle_ACR_Carb_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E (Short/Tan)";
     picture = "\hlc_wp_acr\tex\ui\gear_carbine-tan_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co.tga", "hlc_wp_ACR\tex\map2-68tan_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co", "hlc_wp_ACR\tex\map2-68tan_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     class __MAGSWITCHCLASS {
         hlc_50rnd_556x45_EPR = "hlc_rifle_ACR_Carb_tan_x15";
         default = "hlc_rifle_ACR_Carb_tan";
@@ -1204,7 +1215,7 @@ class hlc_rifle_ACR_Carb_green :hlc_rifle_ACR_Carb_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E (Short/Green)";
     picture = "\hlc_wp_acr\tex\ui\gear_carbine-green_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co.tga", "hlc_wp_ACR\tex\map2-556green_co.tga", "hlc_wp_ACR\tex\map3-green_co.tga", "hlc_wp_ACR\tex\mapyesGreen_co.tga", "hlc_wp_ACR\tex\pmagGreen_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co", "hlc_wp_ACR\tex\map2-556green_co", "hlc_wp_ACR\tex\map3-green_co", "hlc_wp_ACR\tex\mapyesGreen_co", "hlc_wp_ACR\tex\pmagGreen_co", "hlc_wp_ACR\tex\afg2_co" };
     class __MAGSWITCHCLASS {
         hlc_50rnd_556x45_EPR = "hlc_rifle_ACR_Carb_green_x15";
         default = "hlc_rifle_ACR_Carb_green";
@@ -1228,7 +1239,7 @@ class hlc_rifle_ACR_mid_black :hlc_rifle_ACR_SBR_tan
     model = "hlc_wp_acr\mesh\acr\ACR_midlength.p3d";
     displayName = "Remington ACR-E (Mid/Black)";
     picture = "\hlc_wp_acr\tex\ui\gear_mid-black_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co.tga", "hlc_wp_ACR\tex\map2-68black_co.tga", "hlc_wp_ACR\tex\map3-black_co.tga", "hlc_wp_ACR\tex\mapyesblack_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co", "hlc_wp_ACR\tex\map2-68black_co", "hlc_wp_ACR\tex\map3-black_co", "hlc_wp_ACR\tex\mapyesblack_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     inertia = 0.42;
     __DEXTERITY(4.1 + 0.1, 1); //afg,kx3
     
@@ -1268,7 +1279,7 @@ class hlc_rifle_ACR_mid_tan :hlc_rifle_ACR_mid_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E (Mid/Tan)";
     picture = "\hlc_wp_acr\tex\ui\gear_mid-tan_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co.tga", "hlc_wp_ACR\tex\map2-68tan_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co", "hlc_wp_ACR\tex\map2-68tan_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     class __MAGSWITCHCLASS {
         hlc_50rnd_556x45_EPR = "hlc_rifle_ACR_mid_tan_x15";
         default = "hlc_rifle_ACR_mid_tan";
@@ -1290,7 +1301,7 @@ class hlc_rifle_ACR_mid_green :hlc_rifle_ACR_mid_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E (Mid/Green)";
     picture = "\hlc_wp_acr\tex\ui\gear_mid-green_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co.tga", "hlc_wp_ACR\tex\map2-556green_co.tga", "hlc_wp_ACR\tex\map3-green_co.tga", "hlc_wp_ACR\tex\mapyesGreen_co.tga", "hlc_wp_ACR\tex\pmagGreen_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co", "hlc_wp_ACR\tex\map2-556green_co", "hlc_wp_ACR\tex\map3-green_co", "hlc_wp_ACR\tex\mapyesGreen_co", "hlc_wp_ACR\tex\pmagGreen_co", "hlc_wp_ACR\tex\afg2_co" };
     class __MAGSWITCHCLASS {
         hlc_50rnd_556x45_EPR = "hlc_rifle_ACR_mid_green_x15";
         default = "hlc_rifle_ACR_mid_green";
@@ -1314,7 +1325,7 @@ class hlc_rifle_ACR_full_black :hlc_rifle_ACR_SBR_tan
     model = "hlc_wp_acr\mesh\acr\ACR_riflelength.p3d";
     displayName = "Remington ACR-E (Long/Black)";
     picture = "\hlc_wp_acr\tex\ui\gear_rifle-black_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co.tga", "hlc_wp_ACR\tex\map2-68black_co.tga", "hlc_wp_ACR\tex\map3-black_co.tga", "hlc_wp_ACR\tex\mapyesblack_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1-black_co", "hlc_wp_ACR\tex\map2-68black_co", "hlc_wp_ACR\tex\map3-black_co", "hlc_wp_ACR\tex\mapyesblack_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     inertia = 0.45;
     __DEXTERITY(4.4 + 0.1, 1); //afg,kx3
     
@@ -1354,7 +1365,7 @@ class hlc_rifle_ACR_full_tan :hlc_rifle_ACR_full_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E (Long/Tan)";
     picture = "\hlc_wp_acr\tex\ui\gear_rifle-tan_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co.tga", "hlc_wp_ACR\tex\map2-68tan_co.tga", "hlc_wp_ACR\tex\map3_co.tga", "hlc_wp_ACR\tex\mapyes_co.tga", "hlc_wp_ACR\tex\pmag_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_co", "hlc_wp_ACR\tex\map2-68tan_co", "hlc_wp_ACR\tex\map3_co", "hlc_wp_ACR\tex\mapyes_co", "hlc_wp_ACR\tex\pmag_co", "hlc_wp_ACR\tex\afg2_co" };
     class __MAGSWITCHCLASS {
         hlc_50rnd_556x45_EPR = "hlc_rifle_ACR_full_tan_x15";
         default = "hlc_rifle_ACR_full_tan";
@@ -1376,7 +1387,7 @@ class hlc_rifle_ACR_full_green :hlc_rifle_ACR_full_black {
     dlc = "Niarms_acr";
     displayName = "Remington ACR-E (Long/Green)";
     picture = "\hlc_wp_acr\tex\ui\gear_rifle-green_ca";
-    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co.tga", "hlc_wp_ACR\tex\map2-556green_co.tga", "hlc_wp_ACR\tex\map3-green_co.tga", "hlc_wp_ACR\tex\mapyesGreen_co.tga", "hlc_wp_ACR\tex\pmagGreen_co.tga", "hlc_wp_ACR\tex\afg2_co.tga" };
+    hiddenSelectionsTextures[] = { "hlc_wp_ACR\tex\map1_green_co", "hlc_wp_ACR\tex\map2-556green_co", "hlc_wp_ACR\tex\map3-green_co", "hlc_wp_ACR\tex\mapyesGreen_co", "hlc_wp_ACR\tex\pmagGreen_co", "hlc_wp_ACR\tex\afg2_co" };
     class __MAGSWITCHCLASS {
         hlc_50rnd_556x45_EPR = "hlc_rifle_ACR_full_green_x15";
         default = "hlc_rifle_ACR_full_green";

@@ -5,7 +5,7 @@
 
 class CfgPatches {
     class hlcweapons_falpocalypse {
-        requiredaddons[] = {"A3_Data_F","A3_UI_F","A3_Anims_F","A3_Anims_F_Config_Sdr","A3_Weapons_F","asdg_jointrails","hlcweapons_core"};
+        requiredaddons[] = {"hlcweapons_core"};
         units[] = {"HLC_FAL_ammobox","Weapon_hlc_rifle_SLRchopmod","Weapon_hlc_rifle_LAR","Weapon_hlc_rifle_c1A1","Weapon_hlc_rifle_FAL5061","Weapon_hlc_rifle_STG58F","Weapon_hlc_rifle_SLR","Weapon_hlc_rifle_L1A1slr","Weapon_hlc_rifle_osw_GL","Weapon_hlc_rifle_falosw","weapon_hlc_rifle_FAL5061Rail"};
         weapons[] = {"hlc_rifle_SLRchopmod","hlc_rifle_LAR","hlc_rifle_c1A1","hlc_rifle_FAL5061","hlc_rifle_STG58F","hlc_rifle_SLR","hlc_rifle_L1A1slr","hlc_rifle_osw_GL","hlc_rifle_falosw","hlc_muzzle_snds_fal","hlc_optic_suit","hlc_optic_PVS4FAL"};
         magazines[] = {"hlc_20Rnd_762x51_B_fal","hlc_20Rnd_762x51_t_fal","hlc_50rnd_762x51_M_FAL","hlc_20Rnd_762x51_S_fal"};
@@ -102,6 +102,12 @@ class CfgVehicles {
 
 };
 
+class CfgMagazineWells {
+    class CBA_762x51_FAL {
+        NIA_mags[] = { __762FAL_MAGS };
+    };
+};
+
 class CfgWeapons {
 
 //optics
@@ -117,6 +123,8 @@ class CfgWeapons {
         displayname = "SUIT";
         picture = "\hlc_wp_FAL\tex\ui\gear_suit_x_ca";
         model = "\hlc_wp_FAL\mesh\SUIT\scope.p3d";
+        weaponInfoType = "RscWeaponZeroing";
+
         class ItemInfo : InventoryOpticsItem_Base_F {
             __OPTIC_DMR;
             mass = 7.5;
@@ -232,6 +240,7 @@ class CfgWeapons {
         deployedpivot = "deploypivot";
         hasBipod = false;
         magazines[] = { __762FAL_MAGS,__762FN_MAGS };
+        magazineWell[] = {"CBA_762x51_FAL"};
         class Library {
             libTextDesc = "FN FAL";
         };
@@ -351,7 +360,7 @@ class CfgWeapons {
         picture = "\hlc_wp_FAL\tex\ui\gear_osw_x_ca";
         
         hiddenSelections[] = { "Reciever", "Barrel", "Frontsight", "Foregrip", "Grip", "Rearsight", "Stock", "Magazine", "Rails", "VFG" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\sa58\barrel-match_co.tga", "hlc_wp_fal\tex\fsight_co.tga", "hlc_wp_fal\tex\sa58\foregrip-dsa_co.tga", "hlc_wp_fal\tex\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\sa58\foldingstock_co.tga", "hlc_wp_fal\tex\mag-20_co.tga", "hlc_wp_fal\tex\dsatoprails_co.tga", "hlc_wp_fal\tex\sa58\verticalgrip_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\sa58\barrel-match_co", "hlc_wp_fal\tex\fsight_co", "hlc_wp_fal\tex\sa58\foregrip-dsa_co", "hlc_wp_fal\tex\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\sa58\foldingstock_co", "hlc_wp_fal\tex\mag-20_co", "hlc_wp_fal\tex\dsatoprails_co", "hlc_wp_fal\tex\sa58\verticalgrip_co" };
         discretedistance[] = {/*100,*/200,300,400,500,600,700/*,800,900*/};
         discretedistanceinitindex = 0;
         cameradir = "look";
@@ -411,7 +420,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Pete, Enron, Toadie";
         model = "\hlc_wp_FAL\mesh\sa58\osw_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\sa58\barrel-match_co.tga", "hlc_wp_fal\tex\fsight_co.tga", "hlc_wp_fal\tex\sa58\foregrip-dsa_co.tga", "hlc_wp_fal\tex\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\sa58\foldingstock_co.tga", "hlc_core\tex\magazines\XMags_co.tga", "hlc_wp_fal\tex\dsatoprails_co.tga", "hlc_wp_fal\tex\sa58\verticalgrip_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\sa58\barrel-match_co", "hlc_wp_fal\tex\fsight_co", "hlc_wp_fal\tex\sa58\foregrip-dsa_co", "hlc_wp_fal\tex\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\sa58\foldingstock_co", "hlc_core\tex\magazines\XMags_co", "hlc_wp_fal\tex\dsatoprails_co", "hlc_wp_fal\tex\sa58\verticalgrip_co" };
         inertia = 0.48+0.225;
         __DEXTERITY(4.8 + 0.1+2.25, 1);
     };
@@ -429,7 +438,7 @@ class CfgWeapons {
         model = "\hlc_wp_FAL\mesh\sag58gl\osw_gl.p3d";
         picture = "\hlc_wp_FAL\tex\ui\gear_oswgl_x_ca";
         hiddenSelections[] = { "Reciever", "Barrel", "Frontsight", "Foregrip", "Grip", "Rearsight", "Stock", "Magazine", "Rails", "M203" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\sa58\barrel-match_co.tga", "hlc_wp_fal\tex\fsight_co.tga", "hlc_wp_fal\tex\sa58\foregrip-dsa_co.tga", "hlc_wp_fal\tex\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\sa58\foldingstock_co.tga", "hlc_wp_fal\tex\mag-20_co.tga", "hlc_wp_fal\tex\dsatoprails_co.tga", "hlc_wp_fal\tex\tigg_m203\m203_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\sa58\barrel-match_co", "hlc_wp_fal\tex\fsight_co", "hlc_wp_fal\tex\sa58\foregrip-dsa_co", "hlc_wp_fal\tex\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\sa58\foldingstock_co", "hlc_wp_fal\tex\mag-20_co", "hlc_wp_fal\tex\dsatoprails_co", "hlc_wp_fal\tex\tigg_m203\m203_co" };
         muzzles[] = {"this", "hlc_M203_OSW"};
         handAnim[] = {"OFP2_ManSkeleton", "\hlc_wp_fal\gesture\newgesture\osw_gl_hands.rtm"};
         class hlc_M203_OSW : UGL_F {
@@ -458,7 +467,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Pete, Enron, Tigg, Bohemia Interactive, Toadie";
         model = "\hlc_wp_FAL\mesh\SAG58GL\OSW_GL_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\sa58\barrel-match_co.tga", "hlc_wp_fal\tex\fsight_co.tga", "hlc_wp_fal\tex\sa58\foregrip-dsa_co.tga", "hlc_wp_fal\tex\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\sa58\foldingstock_co.tga", "hlc_core\tex\magazines\XMags_co.tga", "hlc_wp_fal\tex\dsatoprails_co.tga", "hlc_wp_fal\tex\tigg_m203\m203_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\sa58\barrel-match_co", "hlc_wp_fal\tex\fsight_co", "hlc_wp_fal\tex\sa58\foregrip-dsa_co", "hlc_wp_fal\tex\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\sa58\foldingstock_co", "hlc_core\tex\magazines\XMags_co", "hlc_wp_fal\tex\dsatoprails_co", "hlc_wp_fal\tex\tigg_m203\m203_co" };
         inertia = 0.77+0.225;
         __DEXTERITY(4.8 + 1.36+2.25, 0);
     };
@@ -480,7 +489,7 @@ class CfgWeapons {
         model = "\hlc_wp_FAL\mesh\slr\l1a1_1.p3d";
         picture = "\hlc_wp_FAL\tex\ui\gear_slr_x_ca";
         hiddenSelections[] = { "Reciever", "Barrel", "Frontsight", "GasBlock", "Foregrip", "Grip", "Rearsight", "Stock", "Magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\lithgow\barrel-slr_co.tga", "hlc_wp_fal\tex\israeli\frontsight-1_co.tga", "hlc_wp_fal\tex\lithgow\fsight2_co.tga", "hlc_wp_fal\tex\lithgow\fore-slr_co.tga", "hlc_wp_fal\tex\c1\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\lithgow\stock-solid_co.tga", "hlc_wp_fal\tex\israeli\mag-20_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\lithgow\barrel-slr_co", "hlc_wp_fal\tex\israeli\frontsight-1_co", "hlc_wp_fal\tex\lithgow\fsight2_co", "hlc_wp_fal\tex\lithgow\fore-slr_co", "hlc_wp_fal\tex\c1\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\lithgow\stock-solid_co", "hlc_wp_fal\tex\israeli\mag-20_co" };
         inertia = 0.43;  
         __DEXTERITY(4.5, 0);
         discretedistance[] = {/*100,*/200,300,400,500,600,700/*,800*/};
@@ -536,7 +545,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Pete, Enron, Toadie, Clifton Vlodhammer";
         model = "\hlc_wp_FAL\mesh\slr\l1a1_1_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\lithgow\barrel-slr_co.tga", "hlc_wp_fal\tex\israeli\frontsight-1_co.tga", "hlc_wp_fal\tex\lithgow\fsight2_co.tga", "hlc_wp_fal\tex\lithgow\fore-slr_co.tga", "hlc_wp_fal\tex\c1\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\lithgow\stock-solid_co.tga", "hlc_core\tex\magazines\XMags_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\lithgow\barrel-slr_co", "hlc_wp_fal\tex\israeli\frontsight-1_co", "hlc_wp_fal\tex\lithgow\fsight2_co", "hlc_wp_fal\tex\lithgow\fore-slr_co", "hlc_wp_fal\tex\c1\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\lithgow\stock-solid_co", "hlc_core\tex\magazines\XMags_co" };
         inertia = 0.45+0.225;
         __DEXTERITY(4.4 + 2.25, 0);
     };
@@ -556,7 +565,7 @@ class CfgWeapons {
         model = "\hlc_wp_FAL\mesh\stg58\stg58.p3d";
         picture = "\hlc_wp_FAL\tex\ui\gear_stg58_x_ca";
         hiddenSelections[] = { "Reciever", "Barrel", "Frontsight", "GasBlock", "Foregrip", "Grip", "Rearsight", "Stock", "Magazine", "Rail", "Muzzle" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\rec_co.tga", "hlc_wp_fal\tex\barrel-slr_co.tga", "hlc_wp_fal\tex\fsight_co.tga", "hlc_wp_fal\tex\fsight2_co.tga", "hlc_wp_fal\tex\fore-grooved_co.tga", "hlc_wp_fal\tex\grip-enfield_co.tga", "hlc_wp_fal\tex\rsight-modern_co.tga", "hlc_wp_fal\tex\stock-solid_co.tga", "hlc_wp_fal\tex\mag-20_co.tga","hlc_wp_fal\tex\dsatoprails_co.tga","hlc_wp_fal\tex\bis_falpara\fnfal_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\rec_co", "hlc_wp_fal\tex\barrel-slr_co", "hlc_wp_fal\tex\fsight_co", "hlc_wp_fal\tex\fsight2_co", "hlc_wp_fal\tex\fore-grooved_co", "hlc_wp_fal\tex\grip-enfield_co", "hlc_wp_fal\tex\rsight-modern_co", "hlc_wp_fal\tex\stock-solid_co", "hlc_wp_fal\tex\mag-20_co","hlc_wp_fal\tex\dsatoprails_co","hlc_wp_fal\tex\bis_falpara\fnfal_co" };
         discretedistance[] = {/*100,*/200,300,400,500,600,700/*,800,900*/};
         discretedistanceinitindex = 2;
         cameradir = "look";
@@ -582,7 +591,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Pete, Enron, Bohemia Interactive, Toadie, Clifton Vlodhammer";
         model = "\hlc_wp_FAL\mesh\stg58\stg58_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\rec_co.tga", "hlc_wp_fal\tex\barrel-slr_co.tga", "hlc_wp_fal\tex\fsight_co.tga", "hlc_wp_fal\tex\fsight2_co.tga", "hlc_wp_fal\tex\fore-grooved_co.tga", "hlc_wp_fal\tex\grip-enfield_co.tga", "hlc_wp_fal\tex\rsight-modern_co.tga", "hlc_wp_fal\tex\stock-solid_co.tga", "hlc_core\tex\magazines\XMags_co.tga", "hlc_wp_fal\tex\dsatoprails_co.tga", "hlc_wp_fal\tex\bis_falpara\fnfal_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\rec_co", "hlc_wp_fal\tex\barrel-slr_co", "hlc_wp_fal\tex\fsight_co", "hlc_wp_fal\tex\fsight2_co", "hlc_wp_fal\tex\fore-grooved_co", "hlc_wp_fal\tex\grip-enfield_co", "hlc_wp_fal\tex\rsight-modern_co", "hlc_wp_fal\tex\stock-solid_co", "hlc_core\tex\magazines\XMags_co", "hlc_wp_fal\tex\dsatoprails_co", "hlc_wp_fal\tex\bis_falpara\fnfal_co" };
         inertia = 0.51+0.225;
         __DEXTERITY(5.1 + 2.25, 0);
     };
@@ -597,7 +606,7 @@ class CfgWeapons {
         reloadAction = "HLC_GestureReloadFALLONG";
         reloadmagazinesound[] = { "hlc_WP_FAL\snd\fal_reload", 0.630957, 1, 35 };
         hiddenSelections[] = { "Main", "Magazine", "Rail"};
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co.tga", "hlc_core\tex\magazines\FALmag_20rnd_co.tga", "hlc_wp_fal\tex\bis_pvs4\anpvs4_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co", "hlc_core\tex\magazines\FALmag_20rnd_co", "hlc_wp_fal\tex\bis_pvs4\anpvs4_co" };
         handanim[] = { "OFP2_ManSkeleton", "hlc_WP_FAL\gesture\l1a1_hands.rtm" };
         discretedistance[] = {  200, 300, 400, 500, 600, 700 };
         discretedistanceinitindex = 2;
@@ -621,7 +630,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Bohemia Interactive, Arby25, Toadie";
         model = "\hlc_wp_FAL\mesh\FN_FAL\fnFal_rails_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co.tga", "hlc_core\tex\magazines\XMags_co.tga", "hlc_wp_fal\tex\bis_pvs4\anpvs4_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co", "hlc_core\tex\magazines\XMags_co", "hlc_wp_fal\tex\bis_pvs4\anpvs4_co" };
         inertia = 0.44+0.225;
         __DEXTERITY(4.4 + 2.25, 0);
     };
@@ -641,7 +650,7 @@ class CfgWeapons {
         model = "\hlc_wp_FAL\mesh\FN_FAL\FNFAL.p3d";
         picture = "\hlc_wp_FAL\tex\ui\gear_para_x_ca";
         hiddenSelections[] = { "Main", "Magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co.tga", "hlc_core\tex\magazines\FALmag_20rnd_co.tga"};
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co", "hlc_core\tex\magazines\FALmag_20rnd_co"};
         discretedistance[] = {200,300,400,500,600,700};
         discretedistanceinitindex = 2;
         inertia = 0.39;
@@ -668,7 +677,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Bohemia Interactive, Arby25, Toadie";
         model = "\hlc_wp_FAL\mesh\FN_FAL\fnFal_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co.tga", "hlc_core\tex\magazines\XMags_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co", "hlc_core\tex\magazines\XMags_co" };
         inertia = 0.39+0.225;
         __DEXTERITY(3.9 + 2.25, 0);
     };
@@ -688,7 +697,7 @@ class CfgWeapons {
         model = "\hlc_wp_FAL\mesh\FN_FAL\FNFAL_full.p3d";
         picture = "\hlc_wp_FAL\tex\ui\gear_fal_ca";
         hiddenSelections[] = { "Main", "Stock", "Barrel", "Magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co.tga", "hlc_wp_fal\tex\arby25_fal\fnfal2_co.tga", "hlc_wp_fal\tex\lithgow\barrel-slr_co.tga","hlc_core\tex\magazines\FALmag_20rnd_co.tga"};
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co", "hlc_wp_fal\tex\arby25_fal\fnfal2_co", "hlc_wp_fal\tex\lithgow\barrel-slr_co","hlc_core\tex\magazines\FALmag_20rnd_co"};
         discretedistance[] = {  200, 300, 400, 500, 600, 700 };
         discretedistanceinitindex = 2;
         inertia = 0.43;
@@ -707,7 +716,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Bohemia Interactive, Arby25, Toadie";
         model = "\hlc_wp_FAL\mesh\FN_FAL\FNFAL_full_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co.tga", "hlc_core\tex\magazines\XMags_co.tga", "hlc_wp_fal\tex\lithgow\barrel-slr_co.tga","hlc_core\tex\magazines\XMags_co.tga"};
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co", "hlc_core\tex\magazines\XMags_co", "hlc_wp_fal\tex\lithgow\barrel-slr_co","hlc_core\tex\magazines\XMags_co"};
         inertia = 0.43+0.225;
         __DEXTERITY(4.3 + 2.25, 0);
     };
@@ -719,7 +728,7 @@ class CfgWeapons {
         model = "\hlc_wp_FAL\mesh\FN_FAL\fnFal_full_rails.p3d";
         picture = "\hlc_wp_FAL\tex\ui\gear_fal_ca";
         hiddenSelections[] = { "Main", "Stock", "Barrel", "Rail", "Magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co.tga", "hlc_wp_fal\tex\arby25_fal\fnfal2_co.tga", "hlc_wp_fal\tex\lithgow\barrel-slr_co.tga", "hlc_wp_fal\tex\bis_pvs4\anpvs4_co.tga", "hlc_core\tex\magazines\FALmag_20rnd_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co", "hlc_wp_fal\tex\arby25_fal\fnfal2_co", "hlc_wp_fal\tex\lithgow\barrel-slr_co", "hlc_wp_fal\tex\bis_pvs4\anpvs4_co", "hlc_core\tex\magazines\FALmag_20rnd_co" };
         class WeaponSlotsInfo : WeaponSlotsInfo {
             mass = 99;
         };
@@ -736,7 +745,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Bohemia Interactive, Arby25, Toadie";
         model = "\hlc_wp_FAL\mesh\FN_FAL\fnFal_full_rails_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co.tga", "hlc_core\tex\magazines\XMags_co.tga", "hlc_wp_fal\tex\lithgow\barrel-slr_co.tga", "hlc_wp_fal\tex\bis_pvs4\anpvs4_co.tga", "hlc_core\tex\magazines\XMags_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_co", "hlc_core\tex\magazines\XMags_co", "hlc_wp_fal\tex\lithgow\barrel-slr_co", "hlc_wp_fal\tex\bis_pvs4\anpvs4_co", "hlc_core\tex\magazines\XMags_co" };
         inertia = 0.5+0.225;
         __DEXTERITY(4.6 + 2.25, 0);
     };
@@ -747,7 +756,7 @@ class CfgWeapons {
         displayName = "FN FAL 50.00(Rhod. Spraycam)";
         picture = "\hlc_wp_FAL\tex\ui\gear_falRH_ca";
         hiddenSelections[] = { "Main", "Stock", "Barrel" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_Rhodie_co.tga", "hlc_wp_fal\tex\arby25_fal\fnfal2_Rhodie_co.tga", "hlc_wp_fal\tex\lithgow\barrel-slr_Rhodie_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_Rhodie_co", "hlc_wp_fal\tex\arby25_fal\fnfal2_Rhodie_co", "hlc_wp_fal\tex\lithgow\barrel-slr_Rhodie_co" };
         class __MAGSWITCHCLASS {
             hlc_50rnd_762x51_M_FAL = "hlc_rifle_FAL5000_RH_XMAG";
             hlc_50rnd_762x51_MDIM_FAL = "hlc_rifle_FAL5000_RH_XMAG";
@@ -759,7 +768,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Bohemia Interactive, Arby25, Toadie";
         model = "\hlc_wp_FAL\mesh\FN_FAL\fnFal_full_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_Rhodie_co.tga", "hlc_wp_fal\tex\arby25_fal\fnfal2_Rhodie_co.tga", "hlc_wp_fal\tex\lithgow\barrel-slr_Rhodie_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\bis_falpara\fnfal_Rhodie_co", "hlc_wp_fal\tex\arby25_fal\fnfal2_Rhodie_co", "hlc_wp_fal\tex\lithgow\barrel-slr_Rhodie_co" };
         inertia = 0.43+0.225;
         __DEXTERITY(4.3 + 2.25, 0);
     };
@@ -776,7 +785,7 @@ class CfgWeapons {
         model = "\hlc_wp_FAL\mesh\l1a1\L1A1.p3d";
         picture = "\hlc_wp_FAL\tex\ui\gear_l1a1_x_ca";
         hiddenSelections[] = { "Reciever", "Barrel", "Frontsight", "GasBlock", "Foregrip", "Grip", "Rearsight", "Stock", "Magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\lithgow\barrel-slr_co.tga", "hlc_wp_fal\tex\israeli\frontsight-1_co.tga", "hlc_wp_fal\tex\lithgow\fsight2_co.tga", "hlc_wp_fal\tex\c1\foregrip-vented_co.tga", "hlc_wp_fal\tex\c1\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\lithgow\stock-solid_co.tga", "hlc_wp_fal\tex\israeli\mag-20_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\lithgow\barrel-slr_co", "hlc_wp_fal\tex\israeli\frontsight-1_co", "hlc_wp_fal\tex\lithgow\fsight2_co", "hlc_wp_fal\tex\c1\foregrip-vented_co", "hlc_wp_fal\tex\c1\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\lithgow\stock-solid_co", "hlc_wp_fal\tex\israeli\mag-20_co" };
         class __MAGSWITCHCLASS {
             hlc_50rnd_762x51_M_FAL = "hlc_rifle_L1A1SLR_XMAG";
             hlc_50rnd_762x51_MDIM_FAL = "hlc_rifle_L1A1SLR_XMAG";
@@ -788,7 +797,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Pete, Enron, Toadie, Clifton Vlodhammer";
         model = "\hlc_wp_FAL\mesh\l1a1\L1A1_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\lithgow\barrel-slr_co.tga", "hlc_wp_fal\tex\israeli\frontsight-1_co.tga", "hlc_wp_fal\tex\lithgow\fsight2_co.tga", "hlc_wp_fal\tex\c1\foregrip-vented_co.tga", "hlc_wp_fal\tex\c1\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\lithgow\stock-solid_co.tga", "hlc_core\tex\magazines\XMags_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\lithgow\barrel-slr_co", "hlc_wp_fal\tex\israeli\frontsight-1_co", "hlc_wp_fal\tex\lithgow\fsight2_co", "hlc_wp_fal\tex\c1\foregrip-vented_co", "hlc_wp_fal\tex\c1\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\lithgow\stock-solid_co", "hlc_core\tex\magazines\XMags_co" };
         inertia = 0.44+0.225;
         __DEXTERITY(4.4+ 2.25, 0);
 
@@ -803,7 +812,7 @@ class CfgWeapons {
         scope = public;
         displayName = "CAL C1A1";
         hiddenSelections[] = { "Reciever", "Barrel", "Frontsight", "GasBlock", "Foregrip", "Grip", "Rearsight", "Stock", "Magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\c1\rec_co.tga", "hlc_wp_fal\tex\barrel-slr_co.tga", "hlc_wp_fal\tex\fsight_co.tga", "hlc_wp_fal\tex\fsight2_co.tga", "hlc_wp_fal\tex\c1\foregrip-vented_co.tga","hlc_wp_fal\tex\c1\grip-enfield_co.tga","hlc_wp_fal\tex\israeli\rearsight-slr_co.tga","hlc_wp_fal\tex\c1\stock-solid_co.tga","hlc_wp_fal\tex\mag-20_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\c1\rec_co", "hlc_wp_fal\tex\barrel-slr_co", "hlc_wp_fal\tex\fsight_co", "hlc_wp_fal\tex\fsight2_co", "hlc_wp_fal\tex\c1\foregrip-vented_co","hlc_wp_fal\tex\c1\grip-enfield_co","hlc_wp_fal\tex\israeli\rearsight-slr_co","hlc_wp_fal\tex\c1\stock-solid_co","hlc_wp_fal\tex\mag-20_co" };
         descriptionShort = "Battle Rifle<br/>Caliber: 7.62x51mm NATO";
         model = "\hlc_wp_FAL\mesh\C1A1\C1A1.p3d";
         picture = "\hlc_wp_FAL\tex\ui\gear_c1_x_ca";
@@ -818,7 +827,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Pete, Enron, Toadie, Clifton Vlodhammer";
         model = "\hlc_wp_FAL\mesh\C1A1\C1A1_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\c1\rec_co.tga", "hlc_wp_fal\tex\barrel-slr_co.tga", "hlc_wp_fal\tex\fsight_co.tga", "hlc_wp_fal\tex\fsight2_co.tga", "hlc_wp_fal\tex\c1\foregrip-vented_co.tga", "hlc_wp_fal\tex\c1\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\c1\stock-solid_co.tga", "hlc_core\tex\magazines\XMags_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\c1\rec_co", "hlc_wp_fal\tex\barrel-slr_co", "hlc_wp_fal\tex\fsight_co", "hlc_wp_fal\tex\fsight2_co", "hlc_wp_fal\tex\c1\foregrip-vented_co", "hlc_wp_fal\tex\c1\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\c1\stock-solid_co", "hlc_core\tex\magazines\XMags_co" };
         inertia = 0.44+0.225;
         __DEXTERITY(4.4+ 2.25, 0);
     };
@@ -838,7 +847,7 @@ class CfgWeapons {
         model = "\hlc_wp_FAL\mesh\FN_LAR\L1A1.p3d";
         picture = "\hlc_wp_FAL\tex\ui\gear_izzy_x_ca";
         hiddenSelections[] = { "Reciever", "Barrel", "Frontsight", "Foregrip", "Grip", "Rearsight", "Stock", "Magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\israeli\barrel-izzy.tga", "hlc_wp_fal\tex\israeli\frontsight-1_co.tga",  "hlc_wp_fal\tex\israeli\foregrip-izzy_co.tga", "hlc_wp_fal\tex\c1\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\c1\stock-solid_co.tga", "hlc_wp_fal\tex\mag-20_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\israeli\barrel-izzy", "hlc_wp_fal\tex\israeli\frontsight-1_co",  "hlc_wp_fal\tex\israeli\foregrip-izzy_co", "hlc_wp_fal\tex\c1\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\c1\stock-solid_co", "hlc_wp_fal\tex\mag-20_co" };
         discretedistance[] = {/*100,*/200,300,400,500,600,700/*,800,900*/};
         discretedistanceinitindex = 2;
         cameradir = "look";
@@ -887,7 +896,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Pete, Enron, Toadie, Clifton Vlodhammer";
         model = "\hlc_wp_FAL\mesh\FN_LAR\L1A1_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\israeli\barrel-izzy.tga", "hlc_wp_fal\tex\israeli\frontsight-1_co.tga", "hlc_wp_fal\tex\israeli\foregrip-izzy_co.tga", "hlc_wp_fal\tex\c1\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\c1\stock-solid_co.tga","hlc_core\tex\magazines\XMags_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\israeli\barrel-izzy", "hlc_wp_fal\tex\israeli\frontsight-1_co", "hlc_wp_fal\tex\israeli\foregrip-izzy_co", "hlc_wp_fal\tex\c1\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\c1\stock-solid_co","hlc_core\tex\magazines\XMags_co" };
         inertia = 0.43+0.225;
         __DEXTERITY(4.3+ 2.25, 0);
 
@@ -909,7 +918,7 @@ class CfgWeapons {
         model = "\hlc_wp_FAL\mesh\Suchka-LR\L1A1_1.p3d";
         picture = "\hlc_wp_FAL\tex\ui\gear_bitch_x_ca";
         hiddenSelections[] = { "Reciever", "Barrel", "Frontsight", "GasBlock", "Foregrip", "Grip", "Rearsight", "Stock", "Magazine" };
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\sa58\barrel-match_co.tga", "hlc_wp_fal\tex\israeli\frontsight-1_co.tga", "hlc_wp_fal\tex\lithgow\fsight2_co.tga", "hlc_wp_fal\tex\lithgow\fore-slr_co.tga", "hlc_wp_fal\tex\c1\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\lithgow\stock-solid_co.tga", "hlc_wp_fal\tex\israeli\mag-20_co.tga" };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\sa58\barrel-match_co", "hlc_wp_fal\tex\israeli\frontsight-1_co", "hlc_wp_fal\tex\lithgow\fsight2_co", "hlc_wp_fal\tex\lithgow\fore-slr_co", "hlc_wp_fal\tex\c1\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\lithgow\stock-solid_co", "hlc_wp_fal\tex\israeli\mag-20_co" };
         discretedistance[] = {200,300,400,500,600,700};
         discretedistanceinitindex = 2;
         cameradir = "look";
@@ -958,7 +967,7 @@ class CfgWeapons {
         scopeArsenal = 0;
         author = "Pete, Enron, Toadie, Clifton Vlodhammer";
         model = "\hlc_wp_FAL\mesh\Suchka-LR\L1A1_1_xmag.p3d";
-        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co.tga", "hlc_wp_fal\tex\sa58\barrel-match_co.tga", "hlc_wp_fal\tex\israeli\frontsight-1_co.tga", "hlc_wp_fal\tex\lithgow\fsight2_co.tga", "hlc_wp_fal\tex\lithgow\fore-slr_co.tga", "hlc_wp_fal\tex\c1\grip-enfield_co.tga", "hlc_wp_fal\tex\israeli\rearsight-slr_co.tga", "hlc_wp_fal\tex\lithgow\stock-solid_co.tga", "hlc_core\tex\magazines\XMags_co.tga"  };
+        hiddenSelectionsTextures[] = { "hlc_wp_fal\tex\israeli\rec_sanitary_co", "hlc_wp_fal\tex\sa58\barrel-match_co", "hlc_wp_fal\tex\israeli\frontsight-1_co", "hlc_wp_fal\tex\lithgow\fsight2_co", "hlc_wp_fal\tex\lithgow\fore-slr_co", "hlc_wp_fal\tex\c1\grip-enfield_co", "hlc_wp_fal\tex\israeli\rearsight-slr_co", "hlc_wp_fal\tex\lithgow\stock-solid_co", "hlc_core\tex\magazines\XMags_co"  };
         inertia = 0.39+0.225;
         __DEXTERITY(3.9+ 2.25, 1);
     };
